@@ -175,6 +175,7 @@ form.book .btn{margin-top:16px}
  .tiles{max-width:640px;margin:0 auto}
  .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start}
  .two .head .pic{margin-top:28px}
+ .pic.tall img{aspect-ratio:1/1}
  .strip.todo{display:grid;grid-template-columns:repeat(4,1fr);max-width:var(--w);margin:0 auto;padding:22px 20px 14px;overflow:visible}
  .strip.todo>*{max-width:none}
  .strip.rev figure{flex-basis:340px}
