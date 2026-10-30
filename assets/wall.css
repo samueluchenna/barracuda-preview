@@ -231,7 +231,7 @@ h1.rh{font-size:clamp(28px,8.4vw,36px);line-height:1.1;margin:0 0 12px;letter-sp
 .vid{margin:0;background:#fff;border:2px solid var(--ink);border-radius:22px;overflow:hidden}
 .vframe{position:relative;aspect-ratio:16/9;background:#0b2a3c}
 .vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vposter{position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:inherit;padding:0}
+.vposter{text-decoration:none;position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:inherit;padding:0}
 .vposter b{font-family:var(--disp);font-size:18px;letter-spacing:-.03em}
 .vposter small{font-size:13px;color:#e3f4f9}
 .vposter .play{width:58px;height:58px;border-radius:50%;background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.3)} .vposter .play svg{width:28px;height:28px}
