@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded',function(){
   try{sessionStorage.removeItem('bbreview')}catch(e){}root.classList.remove('review');var dl=sheets.pending;if(dl)shut(dl)})});
 
  /* the share-a-day card: drawn on a canvas in the browser, nothing is uploaded */
- var heroImg=new Image(),logoImg=new Image();heroImg.src='assets/img5/hero-960.webp';logoImg.src='assets/logo-barracuda-320.webp';
+ var heroImg=new Image(),logoImg=new Image();heroImg.src='assets/img5/hero-828.webp';logoImg.src='assets/logo-barracuda-320.webp';
  function nextSat(){var x=new Date();x.setDate(x.getDate()+((6-x.getDay()+7)%7||7));return isoOf(x)}
  function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
  function paintWord(c,txt,cx,y,size,rot){
