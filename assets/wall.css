@@ -306,6 +306,20 @@ h1.rh{font-size:clamp(28px,8.4vw,36px);line-height:1.1;margin:0 0 12px;letter-sp
  .sun{transition:none!important;transform:translateY(26px)!important}
 }
 
+/* skip link: a button that is off-screen until keyboard focus reaches it (first Tab); main takes focus without a ring */
+.skip{position:absolute;left:12px;top:-90px;z-index:300;min-height:44px;padding:0 18px;border:2px solid #fff;border-radius:12px;background:#06283a;color:#fff;font:700 16px/1 var(--body);cursor:pointer}
+.skip:focus{top:10px}
+main:focus{outline:none}
+
+/* Windows high-contrast mode: the painted title is a font with a stroke and shadow, which the system turns into black blobs.
+   Hide the paint and show the real heading text instead, plain and readable. */
+@media (forced-colors:active){
+ .paint{display:none}
+ h1.wallh .sr{position:static;width:auto;height:auto;white-space:normal;overflow:visible}
+ .skip{border-color:ButtonText}
+ .draftbar{border-bottom:1px solid CanvasText}
+}
+
 /* intro: the logo on a clean screen, then a soft dissolve into the page. Opacity and a small scale only. See README.md */
 #intro{display:none}
 .js.intro{overflow:hidden;scrollbar-gutter:stable}

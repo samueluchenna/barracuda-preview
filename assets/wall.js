@@ -71,11 +71,12 @@ document.addEventListener('DOMContentLoaded',function(){
    function(){out(BASE+' I could not share my location. Please help me find the gate.')},{enableHighAccuracy:true,timeout:9000,maximumAge:60000});
  })});
 
- /* review mode: ?review=1 turns it on for this tab, ?review=0 turns it off; the notes list is for Samuel and the GM, not guests */
- [].forEach.call(d.querySelectorAll('[data-review-off]'),function(b){b.addEventListener('click',function(){
-  try{sessionStorage.removeItem('bbreview')}catch(e){}root.classList.remove('review');var dl=sheets.pending;if(dl)shut(dl)})});
+ /* skip link: a button, not a # link, so nothing is ever a hash jump; it moves keyboard focus into the page and scrolls nothing */
+ var skip=d.querySelector('.skip'),mainEl=d.getElementById('main');
+ if(skip&&mainEl)skip.addEventListener('click',function(){mainEl.focus({preventScroll:true})});
 
  /* the share-a-day card: drawn on a canvas in the browser, nothing is uploaded */
+ var SITE='https://samueluchenna.github.io/barracuda-preview/',SHOW='samueluchenna.github.io/barracuda-preview',QR=["111111101011111001101110001111111", "100000101011011000110010001000001", "101110101001011000010100001011101", "101110100001001110101100101011101", "101110101101010110000010001011101", "100000100111100110010001101000001", "111111101010101010101010101111111", "000000000110110110100001100000000", "100111111001101011000000110010111", "101111011010111111110001000011100", "011110100000110100001011011011111", "100001011110010110111011010100101", "001100110011110101001001001000011", "100011000101001000111001010100100", "100100101100110101010100101001100", "110111010111010010001000110011101", "101110101100000100001011011110000", "000010010111111101111110011010101", "010110100100011101111111001101101", "110110001000100010000010011011100", "010011111010010110100001000101001", "101101011001100001001011000110100", "100100101110001001100001001001011", "100000010011101101011001011010101", "110101101010101000001000111110011", "000000001010111111000000100010110", "111111101101001111011101101010110", "100000101011110011100001100011110", "101110101000101011001011111110010", "101110101111110011110100110101111", "101110100010011101010111110111011", "100000100111101000100000011111111", "111111101010110111010000100110000"];
  var heroImg=new Image(),logoImg=new Image();heroImg.src='assets/img5/hero-828.webp';logoImg.src='assets/logo-barracuda-320.webp';
  function nextSat(){var x=new Date();x.setDate(x.getDate()+((6-x.getDay()+7)%7||7));return isoOf(x)}
  function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
@@ -91,21 +92,28 @@ document.addEventListener('DOMContentLoaded',function(){
  function drawCard(c,iso,n){
   var W=1080,H=1350,x=c.getContext('2d');if(c.width!==W){c.width=W;c.height=H}
   x.clearRect(0,0,W,H);x.fillStyle='#06283a';x.fillRect(0,0,W,H);
-  if(heroImg.complete&&heroImg.naturalWidth){var s=Math.max(W/heroImg.naturalWidth,780/heroImg.naturalHeight),iw=W/s,ih=780/s,sx=(heroImg.naturalWidth-iw)*.48;x.drawImage(heroImg,sx,0,iw,ih,0,0,W,780)}
-  var g=x.createLinearGradient(0,380,0,780);g.addColorStop(0,'rgba(6,40,58,0)');g.addColorStop(1,'rgba(6,40,58,.7)');x.fillStyle=g;x.fillRect(0,0,W,780);
+  if(heroImg.complete&&heroImg.naturalWidth){var s=Math.max(W/heroImg.naturalWidth,720/heroImg.naturalHeight),iw=W/s,ih=720/s,sx=(heroImg.naturalWidth-iw)*.48;x.drawImage(heroImg,sx,0,iw,ih,0,0,W,720)}
+  var g=x.createLinearGradient(0,340,0,720);g.addColorStop(0,'rgba(6,40,58,0)');g.addColorStop(1,'rgba(6,40,58,.7)');x.fillStyle=g;x.fillRect(0,0,W,720);
   if(logoImg.complete&&logoImg.naturalWidth){x.save();x.beginPath();x.arc(120,120,78,0,7);x.closePath();x.fillStyle='#fff';x.fill();x.clip();x.drawImage(logoImg,48,48,144,144);x.restore()}
   paintWord(x,'BARRACUDA',W/2,515,100,[-3,2,-1.5,3,-2,1.5,-2.5,2,-1]);paintWord(x,'BEACH',W/2+60,632,100,[2,-2.5,1.5,-1.5,3]);
-  x.fillStyle='#06283a';rr(x,0,742,W,H-742+80,56);x.fill();
-  var cols=['#d62d2a','#ffc61a','#14833d','#1766b8'];for(var i=0,fx=26;fx<W;i++,fx+=96){x.fillStyle=cols[i%4];x.beginPath();x.moveTo(fx,716);x.lineTo(fx+54,716);x.lineTo(fx+27,782);x.closePath();x.fill()}
+  x.fillStyle='#06283a';rr(x,0,690,W,H-690+80,56);x.fill();
+  var cols=['#d62d2a','#ffc61a','#14833d','#1766b8'];for(var i=0,fx=26;fx<W;i++,fx+=96){x.fillStyle=cols[i%4];x.beginPath();x.moveTo(fx,664);x.lineTo(fx+54,664);x.lineTo(fx+27,730);x.closePath();x.fill()}
   var p=parts(iso),dateTxt=p?DAYS[p.wd]+' '+p.d+' '+MON[p.m]:'Pick a day',yr=p?String(p.y):'';
-  x.textAlign='center';x.fillStyle='#1fc8dc';x.font='700 34px Unbounded,Arial,sans-serif';x.fillText('BEACH DAY',W/2,850);
+  x.textAlign='center';x.fillStyle='#1fc8dc';x.font='700 34px Unbounded,Arial,sans-serif';x.fillText('BEACH DAY',W/2,790);
   var fs=66;x.font='800 '+fs+'px Unbounded,Arial,sans-serif';while(x.measureText(dateTxt).width>960&&fs>36){fs-=2;x.font='800 '+fs+'px Unbounded,Arial,sans-serif'}
-  x.fillStyle='#fff';x.fillText(dateTxt,W/2,935);
-  x.fillStyle='#9fc4d4';x.font='700 40px "Hanken Grotesk",Arial,sans-serif';x.fillText(yr,W/2,985);
-  x.fillStyle='#ffc61a';rr(x,W/2-250,1020,500,100,50);x.fill();x.fillStyle='#0b1d2a';x.font='800 50px Unbounded,Arial,sans-serif';x.fillText(n===1?'Just me':n+' of us',W/2,1088);
-  x.fillStyle='#fff';x.font='700 42px "Hanken Grotesk",Arial,sans-serif';x.fillText('Okun Ajah, Lagos',W/2,1180);
-  x.fillStyle='#12783f';rr(x,70,1214,W-140,84,42);x.fill();x.fillStyle='#fff';x.font='700 33px "Hanken Grotesk",Arial,sans-serif';x.fillText('Ask us the fee on WhatsApp: '+PH,W/2,1267);
-  x.fillStyle='#9fc4d4';x.font='500 26px "Hanken Grotesk",Arial,sans-serif';x.fillText('An invitation. The resort confirms the day.',W/2,1330);
+  x.fillStyle='#fff';x.fillText(dateTxt,W/2,875);
+  x.fillStyle='#9fc4d4';x.font='700 40px "Hanken Grotesk",Arial,sans-serif';x.fillText(yr,W/2,925);
+  x.fillStyle='#ffc61a';rr(x,W/2-250,960,500,100,50);x.fill();x.fillStyle='#0b1d2a';x.font='800 50px Unbounded,Arial,sans-serif';x.fillText(n===1?'Just me':n+' of us',W/2,1028);
+  /* bottom band: the QR code of the web address on the left, where and how to ask on the right */
+  var N=QR.length,m=Math.floor(200/N),qz=m*3,box=N*m+2*qz,bx=64,by=1096;
+  x.fillStyle='#fff';rr(x,bx,by,box,box,20);x.fill();x.fillStyle='#0a1c28';
+  for(var r=0;r<N;r++)for(var c2=0;c2<N;c2++)if(QR[r].charAt(c2)==='1')x.fillRect(bx+qz+c2*m,by+qz+r*m,m,m);
+  var tx=bx+box+36,tw=W-64-tx;x.textAlign='left';
+  x.fillStyle='#fff';x.font='700 40px "Hanken Grotesk",Arial,sans-serif';x.fillText('Okun Ajah, Lagos',tx,1150);
+  var us=28;x.font='700 '+us+'px "Hanken Grotesk",Arial,sans-serif';while(x.measureText(SHOW).width>tw&&us>16){us-=1;x.font='700 '+us+'px "Hanken Grotesk",Arial,sans-serif'}
+  x.fillStyle='#1fc8dc';x.fillText(SHOW,tx,1200);
+  x.fillStyle='#12783f';rr(x,tx,1222,tw,68,34);x.fill();x.fillStyle='#fff';x.font='700 30px "Hanken Grotesk",Arial,sans-serif';x.textAlign='center';x.fillText('Ask the fee on WhatsApp: '+PH,tx+tw/2,1267);
+  x.textAlign='left';x.fillStyle='#9fc4d4';x.font='500 24px "Hanken Grotesk",Arial,sans-serif';x.fillText('Scan the code. The resort confirms the day.',tx,1324);
   x.textAlign='start';
  }
  var sd=d.getElementById('s-date'),sn=d.getElementById('s-n'),big=d.getElementById('cardbig'),prev=d.querySelector('canvas.cardprev');
@@ -124,7 +132,7 @@ document.addEventListener('DOMContentLoaded',function(){
  if(sv)sv.addEventListener('click',function(){fonts().then(function(){drawAll();return blobOf()}).then(function(b){var u=URL.createObjectURL(b),a=d.createElement('a');a.href=u;a.download='barracuda-beach-day.jpg';d.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000)})});
  if(sh){if(!(navigator.share&&navigator.canShare))sh.style.display='none';
   sh.addEventListener('click',function(){blobOf().then(function(b){var f=new File([b],'barracuda-beach-day.jpg',{type:'image/jpeg'});
-   if(navigator.canShare({files:[f]}))return navigator.share({files:[f],text:'Come to the beach with us. Barracuda Beach, Okun Ajah.'});
+   if(navigator.canShare({files:[f]}))return navigator.share({files:[f],text:'Come to the beach with us. Barracuda Beach, Okun Ajah. '+SITE});
    sv.click()}).catch(function(){})})}
 
  /* the resort's own room videos: nothing is loaded from YouTube until a guest taps play (youtube-nocookie player) */
