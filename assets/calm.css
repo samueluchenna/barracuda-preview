@@ -95,7 +95,7 @@ html.js:not(.intro) .paint .cloud{animation:cloud .8s ease-out both}
 @keyframes cloud{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
 .hero .sub{font-size:clamp(19px,5vw,24px);line-height:1.3;font-weight:500;letter-spacing:-.012em;color:var(--mut);max-width:30ch;margin:22px auto 0}
 .hero .frame{margin-top:40px}
-.hero .frame img{aspect-ratio:4/5;object-position:46% 55%}
+.hero .frame img{aspect-ratio:4/3;object-position:50% 50%}
 
 /* the day bar: slim, sticks under the top bar while the five stops are on screen, shows where you are. It cannot be tapped, so it never moves the page. */
 .day{position:relative}
@@ -232,11 +232,11 @@ form.book .pill{margin-top:16px}
  .hcall b{display:inline} nav.links a:first-child{display:inline-block}
  .logo small{display:none}
  .tile{padding:96px 0 88px}
- .hero{padding:72px 0 88px}
+ .hero{padding:56px 0 88px}
  h1.wallh{font-size:clamp(56px,6.2vw,84px)}
  .paint{padding:24px 30px 34px}
  .hero .sub{max-width:36ch}
- .hero .frame{max-width:1024px;margin-top:56px} .hero .frame img{aspect-ratio:16/9}
+ .hero .frame{max-width:1024px;margin-top:40px} .hero .frame img{aspect-ratio:3/1;object-position:50% 70%}
  .frame{max-width:800px} .frame img{aspect-ratio:16/9} .frame.wide img{aspect-ratio:21/9} .frame.crop img{aspect-ratio:4/5}
  .duo{max-width:880px;align-items:start}
  .tile h2{max-width:18ch}
