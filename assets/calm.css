@@ -1,0 +1,327 @@
+/* BARRACUDA v6 "CALM". Layout language taken from the biggest brand sites (measured live on 31 Oct 2026, see design-study\):
+   one idea per screen, one headline and one line and two pills per tile, one repeated button shape, a slim bar that stays put,
+   spec lists with big values and small labels, photos framed on quiet tiles (never stretched to the edge), one accent colour.
+   Cool palette only. Type: Hanken Grotesk for headlines and text, Unbounded only for the painted name, the clock times and the big number.
+   Nothing here scrolls the page on tap. No counting animations. The only motion is the one-time paint of the name and a short sheet slide. */
+@font-face{font-family:"Unbounded";font-style:normal;font-weight:200 900;font-display:swap;src:url(fonts/unbounded.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Hanken Grotesk";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/hanken-grotesk.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--ink:#0b1d2a;--mut:#4a5e6b;--bg:#fff;--tile:#f3f7fa;--navy:#06283a;--blue:#0b6bcb;--blue-d:#0957a6;--sky:#e4f0f8;--pool:#1fc8dc;--line:rgba(11,29,42,.14);--wa:#12783f;
+ --yel:#ffc61a;--w:1024px;--r:28px;--hd:52px;--bar:76px;--intro-rgb:6,40,58;--intro-ring:#0b6bcb;
+ --disp:"Unbounded","Segoe UI",Arial,sans-serif;--body:"Hanken Grotesk","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:auto;background:var(--bg);scrollbar-gutter:stable;-webkit-text-size-adjust:100%}
+html.locked{overflow:hidden}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--bg);font-size:17px;line-height:1.47;padding-bottom:calc(var(--bar) + env(safe-area-inset-bottom))}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue-d)}
+svg{width:20px;height:20px;fill:currentColor;flex:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.sr{position:absolute;left:-9999px;top:auto;width:1px;height:1px;white-space:nowrap}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--body);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin:0}
+h3{font-size:22px;letter-spacing:-.02em;line-height:1.15}
+p{margin:0 0 12px}
+.lab{font:700 12px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:0 0 14px}
+.src{font-size:13.5px;color:var(--mut);margin:12px 0 0}
+
+/* review copy only: the dashed tags and the banner. Guests never get this markup at all. */
+.chip{display:inline-block;font-size:12px;font-weight:700;color:#3f5c69;border:1px dashed #7f9aa6;border-radius:20px;padding:1px 9px;margin-left:6px;vertical-align:middle;white-space:nowrap;background:#fff}
+.draftbar{background:#fff7c2;color:#4a3d00;font-size:13px;line-height:1.35;padding:7px 0;border-bottom:1px solid #e6d77a}
+.draftbar b{color:#2b2300} .draftbar button{font:inherit;color:inherit;background:none;border:0;text-decoration:underline;cursor:pointer;padding:0 0 0 6px}
+.draftbar a{color:inherit;margin-left:6px}
+
+/* one button shape everywhere: a pill, 44 px tall. Filled blue = the action. Outline = the second choice. A text link with an arrow = the quiet third. */
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 22px;border-radius:999px;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font:600 17px/1 var(--body);text-decoration:none;cursor:pointer;white-space:nowrap}
+.pill:hover{background:var(--blue-d);border-color:var(--blue-d)}
+.pill.o{background:transparent;color:var(--blue)} .pill.o:hover{background:var(--sky);color:var(--blue-d)}
+.pill.wa{background:var(--wa);border-color:var(--wa)} .pill.wa:hover{background:#0e6335;border-color:#0e6335}
+.pill[disabled]{opacity:.7;cursor:progress}
+.pill.full{width:100%}
+.dark .pill{background:#fff;border-color:#fff;color:var(--navy)} .dark .pill:hover{background:#e4f0f8}
+.dark .pill.o{background:transparent;color:#fff} .dark .pill.o:hover{background:rgba(255,255,255,.12)}
+.lnk{color:var(--blue);font-weight:600;text-decoration:none;display:inline-block;padding:11px 2px}
+.lnk::after{content:" \203A"}
+.dark .lnk{color:#8fd0ff}
+.acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:26px 0 0}
+
+/* the slim bar at the top: wordmark on the left, one action on the right, same on every page */
+header.top{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:var(--hd);gap:10px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);flex:none}
+.logo img{height:34px;width:34px;border-radius:50%}
+.logo span{font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;line-height:1}
+.logo small{display:none}
+nav.links{display:flex;gap:2px;margin-left:auto}
+nav.links a:first-child{display:none}
+nav.links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;padding:10px 12px;border-radius:10px} nav.links a:hover{background:var(--sky)} nav.links a.on{color:var(--blue-d)}
+.hr{display:flex;align-items:center;gap:6px}
+.hcall{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600;text-decoration:none;min-height:44px;min-width:44px;justify-content:center;border-radius:12px} .hcall svg{color:var(--blue)} .hcall b{display:none;font-size:15px;font-weight:600}
+.hbook{min-height:36px;padding:0 16px;font-size:15px}
+
+/* TILES: each is one idea. A small label, a short headline, one line, one or two pills, then the picture. */
+.tile{padding:60px 0 52px;text-align:center;background:var(--bg)}
+.tile.alt{background:var(--tile)}
+.tile.dark{background:var(--navy);color:#fff}
+.tile h2{font-size:clamp(38px,10.4vw,64px);max-width:15ch;margin:0 auto}
+.tile .sub{font-size:clamp(19px,5vw,24px);line-height:1.28;font-weight:500;letter-spacing:-.012em;color:var(--mut);max-width:34ch;margin:16px auto 0}
+.tile.dark .sub{color:#b8cbd8} .tile.dark .lab{color:#9fd4ea}
+.clock{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin:0 0 16px}
+.clock b{font-weight:800;color:var(--ink);letter-spacing:-.02em;font-size:15px} .dark .clock b{color:#fff} .dark .clock{color:#8fd0ff}
+.frame{position:relative;margin:34px auto 0;max-width:880px;border-radius:var(--r);overflow:hidden;background:#d8e4ec}
+.frame img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.frame.wide img{aspect-ratio:16/10}
+.frame.crop img{aspect-ratio:4/5;object-position:50% 70%}
+.frame.narrow{max-width:460px}
+.duo{display:grid;gap:14px;margin:44px auto 0;max-width:880px} .duo .frame{margin:0}
+.quote{margin:34px auto 0;max-width:34ch} .quote p{font-size:clamp(20px,5.2vw,26px);line-height:1.28;font-weight:600;letter-spacing:-.02em;margin:0 0 6px}
+.quote footer{font-size:14px;color:var(--mut)} .dark .quote footer{color:#9fb6c4}
+.quote.small p{font-size:19px;font-weight:500}
+
+/* HERO: the painted name is the only loud thing on the page; everything else is calm */
+.hero{padding:44px 0 56px;text-align:center;background:var(--bg)}
+.hero .lab{margin-bottom:18px}
+h1.wallh{font-family:var(--disp);font-size:clamp(30px,9.2vw,44px);line-height:1;margin:0 auto;letter-spacing:0;font-weight:900;text-transform:uppercase;position:relative}
+.paint{position:relative;display:inline-block;padding:16px 18px 24px;background-color:#0f5fb0;border-radius:34px 52px 38px 56px / 44px 38px 52px 42px;box-shadow:0 8px 0 rgba(6,30,60,.35);text-align:left}
+.paint .cloud{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden;border-radius:inherit;fill:none}
+.paint .cloud path{fill:#1e86d8} .paint .cloud path.b{fill:#19b5d6;opacity:.8} .paint .cloud path.w{fill:rgba(255,255,255,.45)}
+.paint .ln{position:relative;z-index:1;display:block;white-space:nowrap}
+.paint .ln + .ln{margin-top:.1em;padding-left:1.05em}
+.l{display:inline-block;color:var(--yel);-webkit-text-stroke:.16em #0a1c28;paint-order:stroke fill;text-shadow:.03em .1em 0 #14509e,.03em .14em 0 #0a1c28;transform:translateY(var(--y,0)) rotate(var(--r,0));letter-spacing:.01em}
+html.js .paint .l{clip-path:inset(-30% 100% -40% -20%)}
+html.js .paint .cloud{opacity:0;transform:scale(.8)}
+html.js:not(.intro) .paint .l{animation:paint .5s cubic-bezier(.2,.8,.25,1) both;animation-delay:calc(var(--i)*80ms + .15s)}
+html.js:not(.intro) .paint .cloud{animation:cloud .8s ease-out both}
+@keyframes paint{from{clip-path:inset(-30% 100% -40% -20%)}to{clip-path:inset(-30% -25% -40% -20%)}}
+@keyframes cloud{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+.hero .sub{font-size:clamp(19px,5vw,24px);line-height:1.3;font-weight:500;letter-spacing:-.012em;color:var(--mut);max-width:30ch;margin:22px auto 0}
+.hero .frame{margin-top:40px}
+.hero .frame img{aspect-ratio:4/5;object-position:46% 55%}
+
+/* the day bar: slim, sticks under the top bar while the five stops are on screen, shows where you are. It cannot be tapped, so it never moves the page. */
+.day{position:relative}
+.stopbar{position:sticky;top:var(--hd);z-index:35;height:40px;display:flex;align-items:center;justify-content:center;gap:2px;background:#fff;border-bottom:1px solid var(--line);pointer-events:none}
+.stopbar i{font:700 12px/1 var(--disp);font-style:normal;letter-spacing:.02em;padding:7px 10px;border-radius:999px;color:var(--mut);border:1.5px solid transparent}
+body[data-stop="arrive"] .stopbar i[data-s="arrive"],body[data-stop="steps"] .stopbar i[data-s="arrive"],body[data-stop="pool"] .stopbar i[data-s="pool"],body[data-stop="volley"] .stopbar i[data-s="volley"],body[data-stop="horse"] .stopbar i[data-s="horse"],body[data-stop="dusk"] .stopbar i[data-s="dusk"]{background:var(--ink);color:#fff}
+
+/* AT A GLANCE: big values, small labels */
+.spec{display:grid;grid-template-columns:1fr 1fr;margin:44px auto 0;max-width:var(--w);text-align:left;border-top:1px solid var(--line)}
+.spec div{padding:20px 6px 18px;border-bottom:1px solid var(--line)}
+.spec dt{font:700 12px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.spec dd{margin:8px 0 0;font-weight:800;font-size:clamp(24px,6.4vw,34px);letter-spacing:-.03em;line-height:1.08}
+.spec .slot dd{font-weight:600;color:var(--mut)}
+.spec .slot{background:repeating-linear-gradient(135deg,transparent 0 8px,rgba(11,29,42,.04) 8px 16px)}
+
+/* three ways to come: cards on a quiet tile */
+.cards{display:grid;gap:14px;margin:44px auto 0;max-width:var(--w);text-align:left}
+.card{background:#fff;border-radius:var(--r);padding:32px 28px 28px;display:flex;flex-direction:column;min-height:260px}
+.card h3{font-size:30px;letter-spacing:-.03em}
+.card p{color:var(--mut);margin:12px 0 0}
+.card .acts{margin-top:auto;padding-top:26px;justify-content:flex-start}
+
+/* the big number */
+.big{font-family:var(--disp);font-weight:800;font-size:clamp(72px,24vw,168px);letter-spacing:-.06em;line-height:1;margin:0}
+.tile.dark .proofl{color:#fff}
+.stars{margin-top:10px;font-size:15px;color:var(--mut)} .dark .stars{color:#b8cbd8}
+.proofl{font-size:clamp(20px,5vw,26px);font-weight:600;letter-spacing:-.015em;margin:14px auto 0;max-width:22ch}
+
+/* arrival */
+.looks{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 14px;margin:40px -20px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch;text-align:left}
+.looks::-webkit-scrollbar{display:none}
+.look{flex:0 0 78%;max-width:340px;scroll-snap-align:start;margin:0;background:#fff;border-radius:var(--r);overflow:hidden}
+.look img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.look figcaption{padding:14px 16px 16px;font-weight:600;display:flex;gap:10px;align-items:center;line-height:1.25}
+.look i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font:700 12px var(--disp);font-style:normal}
+.steps{max-width:640px;margin:40px auto 0;text-align:left}
+.route{list-style:none;margin:0;padding:0}
+.route li{position:relative;display:flex;gap:16px;padding-bottom:26px}
+.route li:last-child{padding-bottom:0}
+.route li:not(:last-child)::before{content:"";position:absolute;left:18px;top:46px;bottom:4px;width:2px;background:var(--line);transform-origin:top}
+html.js .route li:not(:last-child)::before{transform:scaleY(0);transition:transform .9s ease-out}
+html.js .route.in li:not(:last-child)::before{transform:scaleY(1)}
+html.js .route.in li:nth-child(2)::before{transition-delay:.7s}
+.dot{flex:none;width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--disp);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.route h3{margin-bottom:4px;padding-top:5px;font-size:20px} .route p{color:var(--mut);margin-bottom:8px}
+.say{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 12px;margin:8px 0}
+.say q{flex:1;font-weight:600;font-size:15.5px;line-height:1.3;quotes:none}
+.say .pill{min-height:40px;padding:0 16px;font-size:15px;flex:none}
+.tip{font-size:14.5px}
+.mapnote{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:20px 0 0;font-size:16px;text-align:left}
+.mapnote b{font-weight:800}
+.locnote{font-size:13.5px;color:var(--mut);margin:12px 0 0}
+.steps .acts{justify-content:flex-start}
+
+/* group card */
+.cardprev{display:block;width:min(300px,72vw);height:auto;aspect-ratio:4/5;border-radius:20px;margin:40px auto 0;background:#13244f;box-shadow:0 18px 40px rgba(6,40,58,.25)}
+
+/* questions and contact */
+.qsec{padding:72px 0 28px;text-align:left}
+.qsec h2{font-size:clamp(34px,8.6vw,48px)}
+.qgrid{display:grid;gap:26px}
+.qsec + .qsec{padding-top:28px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600;font-size:18px;padding:8px 2px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:28px;color:var(--blue);font-weight:400;line-height:1}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{color:var(--mut);margin:0 0 16px}
+.contact .row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)} .contact .row svg{color:var(--blue);margin-top:3px}
+.contact .acts{justify-content:flex-start}
+body>footer p a,.src a,.contact .row a,.mapnote a{display:inline-block;padding:11px 4px;margin:-11px 0}
+body>footer{background:var(--tile);border-top:1px solid var(--line);padding:36px 0 30px;font-size:15.5px;margin-top:40px}
+body>footer .plate{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px} body>footer .plate img{border-radius:50%}
+.legal{font-size:13px;color:var(--mut);margin-top:14px;max-width:70ch}
+
+/* bottom bar (phones): the same one action, and WhatsApp */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line)}
+.bar .pill{flex:1;min-height:48px}
+.bar .pill.ico{flex:none;width:48px;padding:0;background:var(--wa);border-color:var(--wa);color:#fff}.bar .pill.ico svg{width:24px;height:24px}
+
+/* sheets open in place; the page behind does not move */
+dialog.sheet{border:0;padding:0;margin:auto 0 0;width:100%;max-width:100%;max-height:92svh;border-radius:26px 26px 0 0;background:#fff;color:var(--ink);overflow:hidden}
+dialog.sheet[open]{animation:up .26s ease-out}
+dialog.sheet::backdrop{background:rgba(6,30,44,.6)}
+@keyframes up{from{transform:translateY(28px);opacity:0}to{transform:none;opacity:1}}
+.sin{padding:16px 20px calc(26px + env(safe-area-inset-bottom));max-height:92svh;overflow-y:auto;overscroll-behavior:contain;text-align:left}
+.shead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.shead h2{margin:0;font-size:24px}
+.x{width:44px;height:44px;border-radius:50%;border:0;background:var(--sky);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.tabs{display:flex;gap:4px;background:var(--sky);border-radius:999px;padding:4px;margin-bottom:14px}
+.tabs button{flex:1;min-height:44px;border:0;border-radius:999px;background:transparent;font-family:inherit;font-weight:600;font-size:15.5px;line-height:1;color:var(--mut);cursor:pointer}
+.tabs button[aria-selected=true]{background:#fff;color:var(--blue-d);box-shadow:0 1px 4px rgba(11,42,60,.18)}
+.lane{display:none}.lane.on{display:block}
+.soft{color:var(--mut);margin:0 0 10px}
+.facts{list-style:none;margin:0 0 14px;padding:0}
+.facts li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15.5px} .facts b{font-weight:700} .facts span{text-align:right;color:var(--mut)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field.full{grid-column:1/-1}
+.field label{display:block;font-weight:600;font-size:14.5px;margin-bottom:5px}
+.field input{width:100%;min-height:50px;border:1.5px solid #b7cad6;border-radius:12px;padding:0 14px;font-family:inherit;font-size:16px;line-height:1.2;color:var(--ink);background:#fff}
+.field input:focus{outline:3px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+.nights,.evnote{display:none}.nights.on,.evnote.on{display:block}
+.ferr{display:none;color:#a4161a;font-weight:700;margin:12px 0 0}.ferr.show{display:block}
+form.book .pill{margin-top:16px}
+.fnote{font-size:13.5px;color:var(--mut);margin:12px 0 0}
+.sin .route{margin-top:6px} .sin .acts{margin-top:14px;justify-content:flex-start}
+.cardwrap{margin:16px 0 0;text-align:center}
+.cardwrap canvas{width:min(100%,300px);height:auto;aspect-ratio:4/5;border-radius:16px;box-shadow:0 8px 24px rgba(11,42,60,.25);background:#e4f0f8}
+.pend{margin:0;padding:0 0 0 20px;font-size:15.5px} .pend li{margin:0 0 10px} .pend b{display:block}
+.sin .steps{margin-top:6px}
+
+/* wide screens: a real desktop layout, not a stretched phone */
+@media (min-width:700px){
+ dialog.sheet{margin:auto;max-width:580px;border-radius:26px;max-height:88vh}
+ .duo{grid-template-columns:1fr 1fr}
+ .looks{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;overflow:visible;padding:0;margin:44px 0 0}
+ .look{max-width:none}
+ .cards{grid-template-columns:repeat(3,1fr)}
+ .spec{grid-template-columns:repeat(3,1fr);column-gap:28px}
+ .qgrid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px}
+}
+@media (min-width:900px){
+ body{padding-bottom:0}
+ .tile.split .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px;align-items:center;text-align:left}
+ .tile.split.rev .frame,.tile.split.rev .cardprev{order:2}
+ .tile.split h2,.tile.split .sub{margin-left:0;margin-right:0}
+ .tile.split .frame,.tile.split .cardprev{margin:0}
+ .tile.split .frame{max-width:none}
+ .tile.split .acts{justify-content:flex-start}
+ .tile.split .quote{grid-column:1/-1;margin:56px auto 0;text-align:center}
+ .tile.split .cardprev{margin:0 auto}
+ .tile.split .frame.narrow{max-width:440px;margin:0 auto}
+ .bar{display:none}
+ .hcall b{display:inline} nav.links a:first-child{display:inline-block}
+ .logo small{display:none}
+ .tile{padding:96px 0 88px}
+ .hero{padding:72px 0 88px}
+ h1.wallh{font-size:clamp(56px,6.2vw,84px)}
+ .paint{padding:24px 30px 34px}
+ .hero .sub{max-width:36ch}
+ .hero .frame{max-width:1024px;margin-top:56px} .hero .frame img{aspect-ratio:16/9}
+ .frame{max-width:800px} .frame img{aspect-ratio:16/9} .frame.wide img{aspect-ratio:21/9} .frame.crop img{aspect-ratio:4/5}
+ .duo{max-width:880px;align-items:start}
+ .tile h2{max-width:18ch}
+ .qsec{padding:104px 0 40px}
+}
+@media (prefers-reduced-motion:reduce){
+ dialog.sheet[open]{animation:none!important}
+ html.js .paint .l{clip-path:none!important;animation:none!important}
+ html.js .paint .cloud{opacity:1!important;transform:none!important;animation:none!important}
+ html.js .route li:not(:last-child)::before{transform:none!important;transition:none!important}
+}
+
+/* skip link: a button that is off-screen until keyboard focus reaches it (first Tab); main takes focus without a ring */
+.skip{position:absolute;left:12px;top:-90px;z-index:300;min-height:44px;padding:0 18px;border:2px solid #fff;border-radius:999px;background:#06283a;color:#fff;font:700 16px/1 var(--body);cursor:pointer}
+.skip:focus{top:10px}
+main:focus{outline:none}
+
+/* Windows high-contrast mode: the painted name is a font with a stroke and shadow, which the system turns into black blobs.
+   Hide the paint and show the real heading text instead, plain and readable. */
+@media (forced-colors:active){
+ .paint{display:none}
+ h1.wallh .sr{position:static;width:auto;height:auto;white-space:normal;overflow:visible}
+ .skip{border-color:ButtonText}
+ .pill{border:2px solid ButtonText}
+ .draftbar{border-bottom:1px solid CanvasText}
+}
+
+/* the v5 helper markup (booking sheet, directions, share sheet, contact) still says .btn: same pill, so one shape everywhere */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 22px;border-radius:999px;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font:600 17px/1 var(--body);text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--blue-d);border-color:var(--blue-d)}
+.btn.line{background:transparent;color:var(--blue)} .btn.line:hover{background:var(--sky);color:var(--blue-d)}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#fff} .btn.wa:hover{background:#0e6335}
+.btn.full{width:100%} .btn[disabled]{opacity:.7;cursor:progress}
+.sin .acts .btn,.sin form .btn{width:100%}
+@media (min-width:700px){.sin .acts .btn{width:auto}}
+.sin .acts{flex-direction:column;align-items:stretch}
+@media (min-width:700px){.sin .acts{flex-direction:row;flex-wrap:wrap}}
+@media (min-width:900px){.tile.split .frame.narrow img{aspect-ratio:1/1}}
+
+/* very small phones: the call icon steps aside (the number is in the contact block, the directions sheet and the WhatsApp button); long button words wrap instead of widening the page */
+@media (max-width:379px){.hcall{display:none}}
+.btn{white-space:normal;text-align:center;line-height:1.2;padding:10px 22px}
+.sin .acts .btn,.steps .acts .btn{flex:1 1 100%}
+@media (min-width:700px){.sin .acts .btn,.steps .acts .btn{flex:0 0 auto}}
+@media (max-width:379px){nav.links a{padding:10px 7px} .hbook{padding:0 13px} .logo span{font-size:13px} .logo{gap:8px} header.top .wrap{gap:4px;padding:0 14px}}
+
+/* rooms page: the first screen is a ROOM; the resort's own videos are click-to-play (nothing loads from YouTube until a tap) */
+.tile h1{font-size:clamp(40px,10.6vw,72px);max-width:12ch;margin:0 auto}
+.hero.room{padding:44px 0 56px}
+.hero.room .frame{margin-top:34px;max-width:460px}
+.hero.room .frame img{aspect-ratio:4/5;object-position:50% 78%}
+.vids{display:grid;gap:14px;margin:34px auto 0;max-width:880px;text-align:left}
+.vid{margin:0;background:#fff;border-radius:var(--r);overflow:hidden}
+.vframe{position:relative;aspect-ratio:16/9;background:#06283a}
+.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vposter{text-decoration:none;position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:inherit;padding:0}
+.vposter b{font-weight:800;font-size:22px;letter-spacing:-.02em}
+.vposter small{font-size:13px;color:#dcecf5}
+.vposter .play{width:56px;height:56px;border-radius:50%;background:#fff;color:var(--navy);display:flex;align-items:center;justify-content:center} .vposter .play svg{width:26px;height:26px}
+.h-blu .vposter{background:linear-gradient(135deg,#0b6bcb,#06283a)} .h-sea .vposter{background:linear-gradient(135deg,#0a7690,#06283a)} .h-grn .vposter{background:linear-gradient(135deg,#2a7f93,#06283a)} .h-red .vposter{background:linear-gradient(135deg,#3b58b8,#06283a)}
+.vid figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px;font-weight:600}
+.vid figcaption a{font-size:14px;font-weight:600;padding:11px 0}
+.ptable{border-collapse:collapse;width:100%;max-width:640px;margin:26px auto 6px;font-size:16px;text-align:left} .ptable th{font:700 12px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--mut);padding:8px 6px;border-bottom:2px solid var(--line)} .ptable td{padding:12px 6px;border-bottom:1px solid var(--line)}
+@media (min-width:700px){.vids{grid-template-columns:1fr 1fr}}
+@media (min-width:900px){
+ .tile.split h1{margin-left:0;margin-right:0;max-width:11ch}
+ .hero.room{padding:72px 0 80px}
+ .hero.room .frame{margin:0;max-width:440px;justify-self:center}
+}
+
+/* one Book action on a phone: the bottom bar carries it, so the top bar does not repeat it. On a laptop there is no bottom bar, so the top bar has it. */
+.hbook{display:none}
+@media (min-width:900px){.hbook{display:inline-flex}}
+
+/* intro: the logo on a clean screen, then a soft dissolve into the page. Opacity and a small scale only. See README.md */
+#intro{display:none}
+.js.intro{overflow:hidden;scrollbar-gutter:stable}
+.js.intro #intro{display:block;position:fixed;inset:0;z-index:1000;background:var(--intro-bg,#fff);cursor:pointer;touch-action:none;animation:iout .8s ease 1.9s forwards}
+#intro .il{position:absolute;left:50%;top:50%;width:min(60vw,240px);height:auto;transform:translate(-50%,-50%)}
+.js.intro #intro .il{animation:ilogo 2.2s cubic-bezier(.22,.61,.36,1) both}
+.iskip{position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;z-index:2;min-height:44px;padding:0 20px;border:1px solid rgba(255,255,255,.7);border-radius:22px;background:rgba(var(--intro-rgb,11,27,61),.9);color:#fff;font-family:inherit;font-weight:700;font-size:15px;line-height:1;cursor:pointer}
+.iskip:focus-visible{outline:0;box-shadow:0 0 0 2px #fff,0 0 0 5px var(--intro-ring,#003eb8)}
+h1[tabindex="-1"]:focus{outline:0}
+@keyframes ilogo{0%{opacity:0;transform:translate(-50%,-50%) scale(.92)}34%,68%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.06)}}
+@keyframes iout{to{opacity:0}}
+@keyframes ifade{0%{opacity:0}100%{opacity:1}}
+@media (min-width:900px){#intro .il{width:260px}}
+@media (prefers-reduced-motion:reduce){.js.intro #intro{animation-delay:1s;animation-duration:.5s}#intro .il,.js.intro #intro .il{animation:ifade .5s ease both}}
