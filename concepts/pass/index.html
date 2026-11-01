@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f1f3f0">
+<title>Barracuda Beach: the day pass | design concept 2</title>
+<meta name="description" content="Design concept 2 for Barracuda Beach Resort, Okun Ajah, Lagos: build your day pass, then send it on WhatsApp.">
+<link rel="icon" href="../_shared/logo-barracuda-88.webp" type="image/webp">
+<link rel="preload" href="../_shared/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js');try{var s=sessionStorage;if(/[?&]intro=1/.test(location.search)||!s.seen&&!location.hash)document.documentElement.classList.add('intro');s.seen=1}catch(e){}</script>
+<link rel="stylesheet" href="../_shared/intro.css?v=202611010248">
+<style>
+@font-face{font-family:"Instrument Sans";src:url(../_shared/fonts/instrument-sans.woff2) format("woff2");font-weight:400 700;font-display:swap}
+:root{--paper:#f1f3f0;--card:#fbfcfa;--ink:#0d1110;--mut:#586360;--hair:#cdd4cf;--lime:#bdf23a;--lime2:#a6dd22;--r:18px;--mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;--pad:clamp(16px,4.6vw,48px);--intro-bg:#f1f3f0;--intro-rgb:13,17,16;--intro-ring:#0d1110}
+*{box-sizing:border-box;margin:0}
+html{background:var(--paper);color:var(--ink);-webkit-text-size-adjust:100%;scroll-behavior:auto}
+body{font:400 16px/1.5 "Instrument Sans",system-ui,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+button,input{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}
+.lab{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(241,243,240,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;letter-spacing:.02em}
+.brand img{width:34px;height:34px;border-radius:50%}
+.brand small{display:none;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--mut);font-weight:400;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;font-weight:600;font-size:15.5px;text-decoration:none;cursor:pointer;transition:background .15s,transform .15s}
+.btn:hover{background:rgba(13,17,16,.07)}
+.btn.lime{background:var(--lime);border-color:var(--ink)}
+.btn.lime:hover{background:var(--lime2)}
+.btn.ink{background:var(--ink);color:var(--paper)}
+.btn.ink:hover{background:#27302d}
+.btn.sm{min-height:40px;padding:0 16px;font-size:14.5px}
+
+/* hero */
+.hero{padding:28px 0 56px}
+.hero .wrap{display:grid;gap:26px}
+h1{font-size:clamp(34px,9.2vw,36px);line-height:1.02;letter-spacing:-.035em;font-weight:700;max-width:12ch}
+.lead{font-size:17px;color:var(--mut);max-width:34ch;margin-top:12px}
+.keys{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ink);margin-top:22px}
+.keys div{padding:12px 0;border-bottom:1px solid var(--hair)}
+.keys div:nth-child(odd){padding-right:12px}
+.keys b{display:block;font-size:22px;letter-spacing:-.02em;font-weight:700;line-height:1.1}
+.keys span{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut)}
+
+/* the pass */
+.pass{position:relative;display:grid;background:var(--card);border:1.5px solid var(--ink);border-radius:var(--r);--cut:11px}
+.pass .main{padding:18px 18px 20px}
+.pass .stub{position:relative;padding:18px;border-top:1.5px dashed var(--ink);background:linear-gradient(180deg,rgba(189,242,58,.35),rgba(189,242,58,.12));border-radius:0 0 calc(var(--r) - 2px) calc(var(--r) - 2px)}
+.pass .stub::before,.pass .stub::after{content:"";position:absolute;top:calc(var(--cut) * -1 - 1px);width:calc(var(--cut) * 2);height:calc(var(--cut) * 2);border-radius:50%;background:var(--paper);border:1.5px solid var(--ink)}
+.pass .stub::before{left:calc(var(--cut) * -1 - 1px);clip-path:inset(50% 0 0 50%)}
+.pass .stub::after{right:calc(var(--cut) * -1 - 1px);clip-path:inset(50% 50% 0 0)}
+.phead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--hair)}
+.phead b{display:block;font-size:22px;letter-spacing:-.02em;font-weight:700;line-height:1.1}
+.tag{display:inline-block;padding:4px 9px;border-radius:6px;background:var(--ink);color:var(--lime);font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.modes{display:flex;gap:6px;margin:14px 0 4px;flex-wrap:wrap}
+.modes button{min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--hair);background:#fff;font-weight:600;font-size:14.5px;cursor:pointer}
+.modes button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;margin-top:16px}
+.fld{display:grid;gap:5px;align-content:start}
+.fld.full{grid-column:1/-1}
+.fld label,.fld .lab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.fld input[type=date],.fld input[type=text]{min-height:46px;padding:0 12px;border-radius:10px;border:1.5px solid var(--hair);background:#fff;width:100%}
+.fld input:focus-visible{border-color:var(--ink);outline:0;box-shadow:0 0 0 3px rgba(189,242,58,.6)}
+.step{display:flex;align-items:center;border:1.5px solid var(--hair);border-radius:10px;background:#fff;overflow:hidden}
+.step button{width:46px;height:44px;border:0;background:none;font-size:22px;cursor:pointer;line-height:1}
+.step button:hover{background:rgba(189,242,58,.45)}
+.step output{flex:1;text-align:center;font-size:22px;font-weight:700;letter-spacing:-.02em}
+.zones{display:flex;flex-wrap:wrap;gap:6px}
+.zones button{min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--hair);background:#fff;font-weight:600;font-size:14.5px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.zones button::before{content:"";width:12px;height:12px;border-radius:50%;border:1.5px solid var(--ink);background:#fff}
+.zones button[aria-pressed=true]{background:var(--lime);border-color:var(--ink)}
+.zones button[aria-pressed=true]::before{background:var(--ink)}
+.only-room,.only-group{display:none}
+.pass[data-mode=room] .only-room,.pass[data-mode=group] .only-group{display:grid}
+.pass[data-mode=room] .not-room{display:none}
+.rows{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;margin-top:16px;padding-top:14px;border-top:1px solid var(--hair)}
+.rows div b{display:block;font-size:16.5px;font-weight:600;line-height:1.25}
+.summary{font-size:15.5px;font-weight:600;line-height:1.35;margin-bottom:12px;min-height:42px}
+.err{color:#9b1c1c;font-size:14px;min-height:18px;margin:-4px 0 8px}
+.fine{font-size:13.5px;color:var(--mut);margin-top:10px}
+.bars{height:34px;margin-top:14px;opacity:.9;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 6px,transparent 6px 10px,var(--ink) 10px 13px,transparent 13px 15px,var(--ink) 15px 16px,transparent 16px 21px)}
+
+/* sections */
+section.s{padding:52px 0 8px}
+.shead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-top:1.5px solid var(--ink);padding-top:12px;margin-bottom:22px}
+h2{font-size:clamp(27px,7.2vw,30px);line-height:1.05;letter-spacing:-.03em;font-weight:700}
+.legs{display:grid;gap:0;border-top:1px solid var(--hair)}
+.leg{display:grid;grid-template-columns:1fr;gap:4px 14px;padding:18px 0;border-bottom:1px solid var(--hair)}
+.leg .no{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.leg p{margin-top:0}
+.fig{margin:0;border:1.5px solid var(--ink);border-radius:var(--r);overflow:hidden;position:relative}
+.fig img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.fig figcaption{position:absolute;left:12px;bottom:12px;padding:5px 10px;border-radius:6px;background:var(--lime);font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}
+.leg h3{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.leg p{color:var(--mut);margin-top:4px;max-width:52ch;font-size:16px}
+.say{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px;padding:10px 12px;border:1.5px dashed var(--ink);border-radius:12px;font-size:15px}
+.say q{quotes:none;flex:1 1 200px}
+.notice{margin-top:18px;padding:14px 16px;border-radius:12px;background:var(--lime);font-weight:600;font-size:15.5px;max-width:64ch;display:flex;gap:12px}
+.notice b{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;padding-top:3px;white-space:nowrap}
+.here{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.tiles{display:grid;gap:14px}
+.tile{position:relative;text-align:left;border:1.5px solid var(--ink);border-radius:var(--r);background:var(--card);overflow:hidden;cursor:pointer;padding:0;display:block;width:100%}
+.tile .ph{display:block;aspect-ratio:16/11;overflow:hidden;background:#cfd6d2}
+.tile img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06);transition:filter .35s,transform .6s}
+.tile .tx{padding:12px 14px 14px;display:grid;gap:3px}
+.tile .tx b{font-size:20px;letter-spacing:-.02em;line-height:1.15}
+.tile .tx span{font-size:14.5px;color:var(--mut)}
+.tile .z{position:absolute;left:10px;top:10px;padding:4px 9px;border-radius:6px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.08em}
+.tile .pick{position:absolute;right:10px;top:10px;padding:4px 9px;border-radius:6px;background:var(--paper);border:1.5px solid var(--ink);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.tile[aria-pressed=true]{background:var(--lime)}
+.tile[aria-pressed=true] img{filter:none}
+.tile[aria-pressed=true] .pick{background:var(--ink);color:var(--lime)}
+.tile:hover img{filter:none}
+.cabin{display:grid;gap:0;border-top:1px solid var(--hair)}
+.room{display:grid;grid-template-columns:1fr auto;gap:8px 14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--hair)}
+.room b{font-size:19px;letter-spacing:-.02em}
+.room span{display:block;color:var(--mut);font-size:14.5px}
+.player{position:relative;aspect-ratio:16/9;border:1.5px solid var(--ink);border-radius:var(--r);overflow:hidden;background:#000;margin-bottom:16px}
+.player img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.player .hint{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:600;text-align:center;padding:10px}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.amen{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;list-style:none;padding:0}
+.amen li{padding:6px 12px;border:1.5px solid var(--hair);border-radius:999px;background:#fff;font-size:14.5px;font-weight:600}
+.tags{display:grid;gap:14px}
+.gtag{position:relative;background:var(--card);border:1.5px solid var(--ink);border-radius:14px;padding:30px 18px 16px;overflow:hidden}
+.gtag::before{content:"";position:absolute;left:50%;top:10px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink)}
+.gtag blockquote{font-size:18.5px;line-height:1.3;font-weight:600;letter-spacing:-.01em}
+.gtag cite{display:block;margin-top:10px;font-style:normal;font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut)}
+.score{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.score b{font-size:46px;line-height:1;letter-spacing:-.04em}
+.score span{color:var(--mut)}
+details{border-top:1px solid var(--hair)}
+details:last-child{border-bottom:1px solid var(--hair)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 0;font-weight:600;font-size:17px;letter-spacing:-.01em;min-height:56px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);font-size:20px;flex:none}
+details[open] summary::after{content:"\2212"}
+details p{padding:0 0 18px;color:var(--mut);max-width:60ch}
+footer{margin-top:64px;background:var(--ink);color:var(--paper);padding:40px 0 calc(40px + env(safe-area-inset-bottom))}
+footer .wrap{display:grid;gap:22px}
+footer b{font-size:26px;letter-spacing:-.03em;line-height:1.1}
+footer p{color:#c0c9c5;max-width:44ch}
+footer .btn{border-color:var(--paper)}
+footer .btn.lime{color:var(--ink)}
+footer .btn:not(.lime):hover{background:rgba(255,255,255,.1)}
+footer .acts{display:flex;flex-wrap:wrap;gap:10px}
+
+/* scroll reveal: only when JavaScript runs */
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.js .rv.in{opacity:1;transform:none}
+
+@media (min-width:900px){
+  .wrap{padding:0 var(--pad)}
+  .brand small{display:inline}
+  .hero{padding:56px 0 80px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr) minmax(420px,520px);gap:64px;align-items:start}
+  h1{font-size:clamp(52px,5.6vw,72px);max-width:10ch}
+  .lead{font-size:19px}
+  .keys{grid-template-columns:repeat(4,1fr)}
+  .keys div:nth-child(odd){padding-right:0}
+  .keys div{padding-right:12px}
+  .pass{grid-template-columns:1fr}
+  h2{font-size:clamp(34px,3.4vw,46px)}
+  .legs .leg{grid-template-columns:120px 1fr 1fr}
+  .leg .no{padding-top:8px}
+  .fig{grid-column:1;grid-row:2;align-self:start}
+  .pass{grid-column:2;grid-row:1 / span 2}
+  .copy{grid-column:1;grid-row:1}
+  .fig img{aspect-ratio:16/9}
+  .tiles{grid-template-columns:repeat(4,1fr);gap:16px}
+  .tags{grid-template-columns:repeat(3,1fr);gap:18px}
+  .cabin-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+  footer .wrap{grid-template-columns:1.2fr 1fr;align-items:end}
+}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.tile img{transition:none}}
+@media print{.top,.pass .stub{display:none}}
+</style>
+</head>
+<body>
+<div id="intro"><button type="button" class="iskip">Skip</button><div class="ib" aria-hidden="true"><img class="il" src="../_shared/logo-barracuda-640.webp" width="640" height="640" alt=""></div></div>
+<script>(function(){var d=document,h=d.documentElement,o=d.getElementById("intro");function end(){if(!h.classList.contains("intro"))return;h.classList.remove("intro");var f=o.contains(d.activeElement);o.remove();if(f){var t=d.querySelector("h1");if(t){t.tabIndex=-1;t.focus({preventScroll:true})}}window.dispatchEvent(new Event("introdone"))}if(!h.classList.contains("intro")){o.remove();return}if(getComputedStyle(o).animationName==="none"){end();return}o.addEventListener("animationend",function(e){if(e.target===o)end()});o.addEventListener("click",end);d.addEventListener("keydown",end);setTimeout(end,4500)})()</script>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img src="../_shared/logo-barracuda-88.webp" width="34" height="34" alt="">Barracuda Beach <small>Okun Ajah, Lagos</small></a>
+  <button type="button" class="btn lime sm" data-scroll="#pass">Get my pass</button>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="copy">
+    <p class="lab">Day pass · Okun Ajah, Lagos</p>
+    <h1 style="margin-top:12px">Your day pass to Barracuda Beach.</h1>
+    <p class="lead">Fill in the pass, send it on WhatsApp, and the resort replies to confirm your day. You pay nothing on this site.</p>
+    <div class="keys">
+      <div><b>4.2</b><span>on Google</span></div>
+      <div><b>6,140</b><span>reviews</span></div>
+      <div><b>12:30</b><span>room check-in</span></div>
+      <div><b>12:00</b><span>room check-out</span></div>
+    </div>
+  </div>
+
+  <form class="pass rv" id="pass" data-mode="day" novalidate aria-label="Your pass">
+    <div class="main">
+      <div class="phead"><div><span class="lab">Barracuda Beach Resort</span><b id="ptitle">Day pass</b></div><span class="tag" id="ptag">Request</span></div>
+      <div class="modes" role="group" aria-label="What are you coming for?">
+        <button type="button" data-mode="day" aria-pressed="true">Day visit</button>
+        <button type="button" data-mode="room" aria-pressed="false">Stay the night</button>
+        <button type="button" data-mode="group" aria-pressed="false">Group or event</button>
+      </div>
+      <div class="fields">
+        <div class="fld full"><label for="p-date" id="datelab">Date</label><input id="p-date" name="date" type="date"></div>
+        <div class="fld"><span class="lab" id="la">Adults</span><div class="step" role="group" aria-labelledby="la"><button type="button" data-step="adults" data-d="-1" aria-label="One adult fewer">&minus;</button><output id="o-adults" aria-live="polite">2</output><button type="button" data-step="adults" data-d="1" aria-label="One adult more">+</button></div></div>
+        <div class="fld"><span class="lab" id="lc">Children</span><div class="step" role="group" aria-labelledby="lc"><button type="button" data-step="children" data-d="-1" aria-label="One child fewer">&minus;</button><output id="o-children" aria-live="polite">0</output><button type="button" data-step="children" data-d="1" aria-label="One child more">+</button></div></div>
+        <div class="fld only-room"><span class="lab" id="ln">Nights</span><div class="step" role="group" aria-labelledby="ln"><button type="button" data-step="nights" data-d="-1" aria-label="One night fewer">&minus;</button><output id="o-nights" aria-live="polite">1</output><button type="button" data-step="nights" data-d="1" aria-label="One night more">+</button></div></div>
+        <div class="fld full only-group"><label for="p-note">What you have in mind</label><input id="p-note" name="note" type="text" placeholder="For example: a birthday for 20 people"></div>
+        <div class="fld full not-room"><span class="lab" id="lz">What do you want to do?</span><div class="zones" role="group" aria-labelledby="lz">
+          <button type="button" data-zone="beach" aria-pressed="false">Beach</button><button type="button" data-zone="pool" aria-pressed="false">Pool</button><button type="button" data-zone="volleyball" aria-pressed="false">Volleyball</button><button type="button" data-zone="horse riding" aria-pressed="false">Horse riding</button>
+        </div></div>
+        <div class="fld full"><label for="p-name">Name on the pass</label><input id="p-name" name="name" type="text" autocomplete="name" placeholder="For example: Ada"></div>
+      </div>
+      <div class="rows">
+        <div><span class="lab">Gate</span><b>The painted wall</b></div>
+        <div><span class="lab">Entry</span><b>Fee on WhatsApp</b></div>
+      </div>
+    </div>
+    <div class="stub">
+      <p class="summary" id="summary" aria-live="polite">2 adults. Pick a date.</p>
+      <p class="err" id="err" role="alert"></p>
+      <button type="submit" class="btn lime" style="width:100%">Send my pass on WhatsApp</button>
+      <p class="fine">This opens WhatsApp with your request ready to send. The resort replies to confirm the day and the fee.</p>
+      <div class="bars" aria-hidden="true"></div>
+    </div>
+  </form>
+    <figure class="fig"><img src="../_shared/img/sign-1000.webp" srcset="../_shared/img/sign-640.webp 640w, ../_shared/img/sign-1000.webp 1000w, ../_shared/img/sign-1400.webp 1400w" sizes="(min-width:900px) 40vw, 92vw" width="1400" height="788" alt="The painted BARRACUDA BEACH sign above the entrance" loading="lazy" decoding="async"><figcaption>The painted wall is the gate</figcaption></figure>
+</div></section>
+
+<section class="s"><div class="wrap">
+  <div class="shead"><h2>How to get here</h2><span class="lab">3 legs</span></div>
+  <div class="legs">
+    <div class="leg rv"><span class="no">Leg 1</span><div><h3>The main road</h3></div><p>Get to the Abraham Adesanya roundabout on the Lekki-Epe Expressway, in Ajah. By bus, ask for the Abraham Adesanya bus stop and get down there.</p></div>
+    <div class="leg rv"><span class="no">Leg 2</span><div><h3>Turn onto Ogombo Road</h3></div><div><p>Go through Ogombo Road toward Okun Ajah. From Abraham Adesanya it is about 7 km, around 25 minutes by car when the road is quiet. Go slowly on the last stretch: guests say it can be rough after rain.</p>
+      <div class="say"><q>Barracuda Beach, Okun Ajah, through Ogombo Road</q><button type="button" class="btn sm" data-copy="Barracuda Beach, Okun Ajah, through Ogombo Road">Copy</button></div></div></div>
+    <div class="leg rv"><span class="no">Leg 3</span><div><h3>Look for the painted wall</h3></div><p>The way in is lined with flags and leads to the painted BARRACUDA BEACH wall. That wall is the gate.</p></div>
+  </div>
+  <div class="notice rv"><b>Notice</b><span>Google Maps can send you to another beach on this road. A beach with another name is not Barracuda. Send us your location and we will guide you.</span></div>
+  <div class="here"><button type="button" class="btn ink" data-loc>Send my location on WhatsApp</button><a class="btn" href="tel:07088654508">Call 0708 865 4508</a></div>
+  <p class="fine" data-loc-note>Your phone asks first. Your location goes only into the WhatsApp message, and you choose whether to send it.</p>
+</div></section>
+
+<section class="s"><div class="wrap">
+  <div class="shead"><h2>On the ground</h2><span class="lab">Tap to add to your pass</span></div>
+  <div class="tiles">
+    <button type="button" class="tile rv" data-zone="beach" aria-pressed="false"><span class="z">Zone A</span><span class="pick">Add</span><span class="ph"><img src="../_shared/img/sea-1000.webp" srcset="../_shared/img/sea-640.webp 640w, ../_shared/img/sea-1000.webp 1000w, ../_shared/img/sea-1400.webp 1400w" sizes="(min-width:900px) 25vw, 92vw" width="1400" height="647" alt="Waves rolling onto the beach under a pale sky" loading="lazy" decoding="async"></span><span class="tx"><b>The beach</b><span>65 guests on Google mention the private beach. 45 say it is not crowded.</span></span></button>
+    <button type="button" class="tile rv" data-zone="pool" aria-pressed="false"><span class="z">Zone B</span><span class="pick">Add</span><span class="ph"><img src="../_shared/img/pool-1000.webp" srcset="../_shared/img/pool-640.webp 640w, ../_shared/img/pool-1000.webp 1000w, ../_shared/img/pool-1400.webp 1400w" sizes="(min-width:900px) 25vw, 92vw" width="1400" height="1050" alt="The outdoor pool with a gold rail, palm trees and thatched huts" loading="lazy" decoding="async"></span><span class="tx"><b>The pool</b><span>An outdoor pool, with palm trees and thatched huts around it.</span></span></button>
+    <button type="button" class="tile rv" data-zone="volleyball" aria-pressed="false"><span class="z">Zone C</span><span class="pick">Add</span><span class="ph"><img src="../_shared/img/courts-1000.webp" srcset="../_shared/img/courts-640.webp 640w, ../_shared/img/courts-1000.webp 1000w, ../_shared/img/courts-1032.webp 1032w" sizes="(min-width:900px) 25vw, 92vw" width="1032" height="774" alt="A sand volleyball court beside the coloured resort buildings" loading="lazy" decoding="async"></span><span class="tx"><b>Volleyball</b><span>A sand court beside the coloured buildings. 52 guests mention it.</span></span></button>
+    <button type="button" class="tile rv" data-zone="horse riding" aria-pressed="false"><span class="z">Zone D</span><span class="pick">Add</span><span class="ph"><img src="../_shared/img/horse-1000.webp" srcset="../_shared/img/horse-640.webp 640w, ../_shared/img/horse-1000.webp 1000w, ../_shared/img/horse-1400.webp 1400w" sizes="(min-width:900px) 25vw, 92vw" width="1400" height="1050" alt="A horse and riders at the water's edge on the beach" loading="lazy" decoding="async"></span><span class="tx"><b>Horse riding</b><span>Along the beach, at the water's edge. 23 guests mention it.</span></span></button>
+  </div>
+</div></section>
+
+<section class="s"><div class="wrap">
+  <div class="shead"><h2>Stay the night</h2><span class="lab">Check-in 12:30 · Check-out 12:00</span></div>
+  <div class="cabin-grid">
+    <div class="rv">
+      <div class="player" id="player"><img src="../_shared/img/room-640.webp" width="1400" height="1867" alt="" loading="lazy"><div class="hint">Choose a room to watch the resort's own video</div></div>
+      <ul class="amen"><li>Air-conditioned</li><li>Free breakfast</li><li>Wi-Fi</li><li>Free parking</li></ul>
+      <p class="fine">As listed on the resort's Google page. Nothing loads from YouTube until you tap Watch.</p>
+    </div>
+    <div class="cabin rv">
+      <div class="room"><div><b>Standard Room</b><span>Price: we reply on WhatsApp</span></div><button type="button" class="btn sm" data-yt="E9F9NCl_I74" data-title="Standard Room" data-target="#player">Watch</button></div>
+      <div class="room"><div><b>Deluxe Room</b><span>Price: we reply on WhatsApp</span></div><button type="button" class="btn sm" data-yt="k3T0BG5xiOs" data-title="Deluxe Room" data-target="#player">Watch</button></div>
+      <div class="room"><div><b>Junior Suite</b><span>Price: we reply on WhatsApp</span></div><button type="button" class="btn sm" data-yt="BMicKhN9Nto" data-title="Junior Suite" data-target="#player">Watch</button></div>
+      <div class="room"><div><b>Executive Suite</b><span>Price: we reply on WhatsApp</span></div><button type="button" class="btn sm" data-yt="DG17_Bgub4o" data-title="Executive Suite" data-target="#player">Watch</button></div>
+      <div style="padding-top:16px"><button type="button" class="btn lime" data-mode-go="room">Make a stay pass</button></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="s"><div class="wrap">
+  <div class="shead"><h2>Passenger notes</h2><span class="lab">Google reviews, word for word</span></div>
+  <div class="score rv"><b>4.2</b><span>from 6,140 reviews on Google</span></div>
+  <div class="tags">
+    <figure class="gtag rv"><blockquote>The place is really beautiful, with amazing sea views and a very relaxing atmosphere.</blockquote><cite>Amarachi Abani</cite></figure>
+    <figure class="gtag rv"><blockquote>Great vibes and even better memories.</blockquote><cite>Sugarshey Sijumoru</cite></figure>
+    <figure class="gtag rv"><blockquote>The beach was much cleaner than it was during my first visit in 2019, and I noticed a lot of improvements.</blockquote><cite>Toyin Akinola</cite></figure>
+  </div>
+</div></section>
+
+<section class="s"><div class="wrap">
+  <div class="shead"><h2>Small print</h2><span class="lab">Questions guests ask first</span></div>
+  <div class="rv">
+    <details><summary>Where exactly is the gate?</summary><p>Follow the three legs above: the Abraham Adesanya roundabout, Ogombo Road, then the painted wall. If Google Maps stops you at a beach with another name, you are not at Barracuda. Send us your location and we will guide you.</p></details>
+    <details><summary>How much is the gate fee?</summary><p>Message us on WhatsApp and we reply with the fee for your day.</p></details>
+    <details><summary>Can I bring my own food and drinks?</summary><p>Ask us when you message, and we tell you the rule.</p></details>
+    <details><summary>Do I pay on this website?</summary><p>No. You send a request, we reply on WhatsApp and confirm the day. How you pay is agreed with the resort.</p></details>
+    <details><summary>Is there parking?</summary><p>Free parking is listed on the resort's Google page.</p></details>
+    <details><summary>Is the beach crowded?</summary><p>45 guests on Google say it is not crowded. Busy days can differ, so ask when you send your request.</p></details>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><b>Okun Ajah, Lagos.</b><p style="margin-top:10px">Off Abraham Adesanya roundabout, off Ogombo Road, Ajah, Lagos.</p></div>
+  <div class="acts"><a class="btn lime" href="https://wa.me/2347088654508" data-wa="Hello Barracuda Beach Resort. I have a question.">Message on WhatsApp</a><a class="btn" href="tel:07088654508">0708 865 4508</a></div>
+</div></footer>
+
+<script src="../_shared/core.js?v=202611010248"></script>
+<script>
+(function () {
+  var form = BB.qs('#pass'), st = { adults: 2, children: 0, nights: 1 }, mode = 'day', zones = {};
+  var titles = { day: 'Day pass', room: 'Stay pass', group: 'Group pass' }, labs = { day: 'Date', room: 'Arrival date', group: 'Date' };
+  function show() {
+    BB.qs('#o-adults').textContent = st.adults; BB.qs('#o-children').textContent = st.children; BB.qs('#o-nights').textContent = st.nights;
+    BB.qs('#ptitle').textContent = titles[mode]; BB.qs('#datelab').textContent = labs[mode];
+    var d = BB.qs('#p-date').value, party = st.adults + (st.adults === 1 ? ' adult' : ' adults') + (st.children ? ', ' + st.children + (st.children === 1 ? ' child' : ' children') : '');
+    var z = Object.keys(zones).filter(function (k) { return zones[k]; });
+    var s = party + (mode === 'room' ? ', ' + st.nights + (st.nights === 1 ? ' night' : ' nights') : '') + '. ' + (d ? BB.niceDate(d) + '.' : 'Pick a date.');
+    if (mode !== 'room' && z.length) s += ' ' + z.join(', ').replace(/^./, function (c) { return c.toUpperCase(); }) + '.';
+    BB.qs('#summary').textContent = s;
+  }
+  BB.qsa('[data-step]', form).forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = b.dataset.step, d = Number(b.dataset.d), min = k === 'adults' || k === 'nights' ? 1 : 0, max = k === 'nights' ? 30 : 200;
+      st[k] = Math.max(min, Math.min(max, st[k] + d)); show();
+    });
+  });
+  function setMode(m) {
+    mode = m; form.dataset.mode = m; BB.qs('#err').textContent = '';
+    BB.qsa('.modes button', form).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.mode === m ? 'true' : 'false'); });
+    show();
+  }
+  BB.qsa('.modes button', form).forEach(function (b) { b.addEventListener('click', function () { setMode(b.dataset.mode); }); });
+  BB.qs('#p-date').addEventListener('input', show);
+
+  function setZone(k, on) {
+    zones[k] = on;
+    BB.qsa('[data-zone="' + k + '"]').forEach(function (el) {
+      el.setAttribute('aria-pressed', on ? 'true' : 'false');
+      var p = el.querySelector('.pick'); if (p) p.textContent = on ? 'Added' : 'Add';
+    });
+    show();
+  }
+  BB.qsa('[data-zone]').forEach(function (el) { el.addEventListener('click', function () { setZone(el.dataset.zone, !zones[el.dataset.zone]); }); });
+
+  BB.qsa('[data-scroll]').forEach(function (b) { b.addEventListener('click', function () { var t = BB.qs(b.dataset.scroll); if (t) { t.scrollIntoView({ block: 'start' }); } }); });
+  BB.qsa('[data-mode-go]').forEach(function (b) { b.addEventListener('click', function () { setMode(b.dataset.modeGo); form.scrollIntoView({ block: 'start' }); }); });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var d = BB.qs('#p-date').value, err = BB.qs('#err');
+    if (!d) { err.textContent = 'Please pick a date for your pass.'; BB.qs('#p-date').focus(); return; }
+    err.textContent = '';
+    var o = { date: d, adults: st.adults, children: st.children, nights: st.nights, name: BB.qs('#p-name').value.trim(), note: BB.qs('#p-note').value.trim() };
+    var z = Object.keys(zones).filter(function (k) { return zones[k]; });
+    var text = BB.msg(mode, o);
+    if (mode !== 'room' && z.length) text = text.replace(' Please tell me', ' We would like to enjoy: ' + z.join(', ') + '. Please tell me');
+    BB.send(text);
+  });
+  show();
+  BB.reveal('.rv');
+})();
+</script>
+</body>
+</html>

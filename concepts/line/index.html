@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#fbfcfd">
+<title>Barracuda Beach: the line | design concept 4</title>
+<meta name="description" content="Design concept 4 for Barracuda Beach Resort, Okun Ajah, Lagos: the route, the day and the rooms drawn as one transit line.">
+<link rel="icon" href="../_shared/logo-barracuda-88.webp" type="image/webp">
+<link rel="preload" href="../_shared/fonts/unbounded.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../_shared/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js');try{var s=sessionStorage;if(/[?&]intro=1/.test(location.search)||!s.seen&&!location.hash)document.documentElement.classList.add('intro');s.seen=1}catch(e){}</script>
+<link rel="stylesheet" href="../_shared/intro.css?v=202611010248">
+<style>
+@font-face{font-family:Unbounded;src:url(../_shared/fonts/unbounded.woff2) format("woff2");font-weight:200 900;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url(../_shared/fonts/hanken-grotesk.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{--bg:#fbfcfd;--ink:#101826;--mut:#566175;--hair:#dde3ea;--road:#101826;--day:#1f4bff;--stay:#008f7a;--card:#fff;--r:14px;--pad:clamp(16px,4.6vw,40px);--spine:30px;--intro-bg:#fbfcfd;--intro-rgb:16,24,38;--intro-ring:#1f4bff}
+*{box-sizing:border-box;margin:0}
+html{background:var(--bg);color:var(--ink);-webkit-text-size-adjust:100%;scroll-behavior:auto}
+body{font:400 16.5px/1.5 "Hanken Grotesk",system-ui,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+button,input{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--day);outline-offset:3px}
+.sign{font-family:Unbounded,"Hanken Grotesk",sans-serif;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:#fff;font-weight:700;font-size:15.5px;text-decoration:none;cursor:pointer;transition:background .15s}
+.btn:hover{background:#eef2f8}
+.btn.day{background:var(--day);border-color:var(--day);color:#fff}
+.btn.day:hover{background:#3a60ff}
+.btn.wa{background:#0e7a3e;border-color:#0e7a3e;color:#fff}
+.btn.sm{min-height:40px;padding:0 16px;font-size:14.5px}
+
+/* header and where-you-are bar */
+.top{position:sticky;top:0;z-index:30;background:rgba(251,252,253,.94);backdrop-filter:blur(8px)}
+.top .row{max-width:1100px;margin:0 auto;padding:0 var(--pad);height:58px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:34px;height:34px;border-radius:50%}
+.brand b{font-size:12.5px;font-weight:700;letter-spacing:.02em;line-height:1.15}
+.brand small{display:block;font-family:"Hanken Grotesk";font-weight:600;font-size:11.5px;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.now{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);background:#fff}
+.now .row{max-width:1100px;margin:0 auto;padding:0 var(--pad);height:44px;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600}
+.pip{width:14px;height:14px;border-radius:50%;border:4px solid var(--c,var(--road));background:#fff;flex:none;transition:border-color .3s}
+.now .lname{color:var(--mut);font-weight:600}
+.now .sname{font-family:Unbounded,sans-serif;font-size:13px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prog{height:3px;background:var(--hair)}
+.prog i{display:block;height:100%;width:100%;background:var(--c,var(--road));transform-origin:left;transform:scaleX(var(--f,0));transition:background .3s}
+
+/* hero */
+.hero{max-width:1100px;margin:0 auto;padding:30px var(--pad) 8px}
+.hero .lab{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+h1{font-family:Unbounded,sans-serif;font-size:clamp(28px,7.6vw,36px);line-height:1.1;letter-spacing:-.035em;font-weight:700;margin-top:10px;max-width:15ch}
+.hero p.lead{margin-top:14px;font-size:17.5px;color:var(--mut);max-width:40ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px;font-size:14px;font-weight:600}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:30px;height:8px;border-radius:4px;background:var(--c)}
+.hero .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+
+/* the line */
+.line{position:relative;max-width:1100px;margin:34px auto 0;padding:0 var(--pad) 40px}
+.stn{position:relative;padding-left:calc(var(--spine) + 16px);--c:var(--road)}
+.stn.day{--c:var(--day)}.stn.stay{--c:var(--stay)}
+.stn::before{content:"";position:absolute;left:calc(var(--spine) / 2 - 4px);top:20px;bottom:-20px;width:8px;border-radius:4px;background:var(--c);transform-origin:top}
+.stn:last-child::before{display:none}
+.stn .dot{position:absolute;left:calc(var(--spine) / 2 - 12px);top:8px;width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid var(--c);z-index:2;transition:background .4s .15s}
+.js .stn::before{transform:scaleY(0);transition:transform .9s cubic-bezier(.3,.6,.2,1)}
+.js .stn.in::before{transform:scaleY(1)}
+.js .stn .card{opacity:0;transform:translateY(14px);transition:opacity .6s ease .1s,transform .6s ease .1s}
+.js .stn.in .card{opacity:1;transform:none}
+.stn.in .dot{background:var(--c)}
+.stn.hub .dot{width:36px;height:36px;left:calc(var(--spine) / 2 - 18px);top:2px;border-width:7px;background:#fff!important;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--ink)}
+.stn.hub::after{content:"";position:absolute;left:calc(var(--spine) / 2 - 6px);top:14px;width:12px;height:12px;border-radius:50%;background:var(--ink);z-index:3}
+.card{margin-bottom:34px}
+.stop{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c)}
+h2.sign{font-size:clamp(21px,5.6vw,27px);line-height:1.12;font-weight:700;margin-top:4px;letter-spacing:-.025em}
+.card p{margin-top:8px;color:var(--mut);max-width:52ch}
+.card .ph{margin-top:14px;border-radius:var(--r);overflow:hidden;border:1px solid var(--hair);background:#e8edf3}
+.card .ph img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border-radius:999px;background:#eef2f8;font-size:14px;font-weight:600}
+.say{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:12px;padding:10px 12px;border:1.5px dashed var(--ink);border-radius:12px;font-size:15px}
+.say q{quotes:none;flex:1 1 200px;color:var(--ink)}
+.wrong{border:2px dashed var(--ink);border-radius:var(--r);padding:16px;background:repeating-linear-gradient(135deg,#fff 0 12px,#f1f4f9 12px 24px)}
+.wrong .stop{color:var(--ink)}
+.wrong p{color:var(--ink)}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.fork{margin:0 0 4px;padding:12px 14px;border-radius:12px;background:#fff;border:1.5px solid var(--ink);font-size:14.5px;font-weight:600;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fork b{font-family:Unbounded,sans-serif;font-size:13px}
+.fork i{display:inline-block;width:22px;height:8px;border-radius:4px;background:var(--c)}
+.platforms{display:grid;gap:8px;margin-top:14px}
+.plat{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border:1px solid var(--hair);border-left:6px solid var(--stay);border-radius:10px;background:#fff}
+.plat b{font-size:16.5px}
+.plat span{display:block;font-size:13.5px;color:var(--mut)}
+.player{position:relative;aspect-ratio:16/9;margin-top:14px;border-radius:var(--r);overflow:hidden;background:#000;border:1px solid var(--hair)}
+.player img{width:100%;height:100%;object-fit:cover;opacity:.7}
+.player .hint{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:700;text-align:center;padding:10px}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.quote{margin-top:12px;padding-left:14px;border-left:4px solid var(--stay)}
+.quote blockquote{font-size:18px;line-height:1.35;font-weight:600;color:var(--ink)}
+.quote cite{display:block;font-style:normal;font-size:13.5px;color:var(--mut);margin-top:4px}
+.score{display:flex;align-items:baseline;gap:10px;margin-top:8px}
+.score b{font-family:Unbounded,sans-serif;font-size:40px;line-height:1;letter-spacing:-.04em}
+.score span{color:var(--mut)}
+form{display:grid;gap:10px;margin-top:14px;max-width:460px}
+.seg{display:flex;border:1.5px solid var(--ink);border-radius:999px;padding:3px;gap:3px}
+.seg label{flex:1;text-align:center}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:block;padding:9px 4px;border-radius:999px;font-weight:700;font-size:14.5px;cursor:pointer}
+.seg input:checked+span{background:var(--ink);color:#fff}
+.seg input:focus-visible+span{outline:2px solid var(--day);outline-offset:2px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f{display:grid;gap:4px}
+.f label{font-size:13px;font-weight:700;color:var(--mut)}
+.f input{min-height:46px;padding:0 12px;border-radius:10px;border:1.5px solid var(--hair);background:#fff;width:100%}
+.f input:focus-visible{border-color:var(--day);outline:0;box-shadow:0 0 0 3px rgba(31,75,255,.2)}
+.f.full{grid-column:1/-1}
+.only-room,.only-event{display:none}
+form[data-kind=room] .only-room,form[data-kind=event] .only-event{display:grid}
+.err{min-height:18px;color:#b3261e;font-size:14px}
+.fine{font-size:14px;color:var(--mut)}
+.faq{max-width:1100px;margin:0 auto;padding:0 var(--pad) 40px}
+.faq h2{font-family:Unbounded,sans-serif;font-size:clamp(22px,5.6vw,30px);letter-spacing:-.03em;margin-bottom:6px}
+.faq details{border-top:1px solid var(--hair)}
+.faq details:last-child{border-bottom:1px solid var(--hair)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 0;font-weight:700;font-size:17px;min-height:56px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;flex:none;color:var(--day)}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{padding:0 0 16px;color:var(--mut);max-width:60ch}
+footer{background:var(--ink);color:#fff;padding:36px 0 calc(36px + env(safe-area-inset-bottom))}
+footer .row{max-width:1100px;margin:0 auto;padding:0 var(--pad);display:grid;gap:18px}
+footer b{font-family:Unbounded,sans-serif;font-size:19px;letter-spacing:-.02em}
+footer p{color:#b9c3d4}
+footer .acts{margin-top:0}
+footer .btn{background:transparent;color:#fff;border-color:#fff}
+footer .btn.wa{background:#0e7a3e;border-color:#0e7a3e}
+
+@media (min-width:900px){
+  :root{--spine:90px}
+  .hero{padding-top:54px}
+  h1{font-size:clamp(44px,4.6vw,64px);max-width:13ch}
+  .stn{display:grid;grid-template-columns:1fr var(--spine) 1fr;padding-left:0;column-gap:0}
+  .stn::before{left:calc(50% - 4px)}
+  .stn .dot{left:calc(50% - 12px)}
+  .stn.hub .dot{left:calc(50% - 18px)}
+  .stn.hub::after{left:calc(50% - 6px)}
+  .stn .card{grid-column:1;padding-right:30px;text-align:right}
+  .stn.r .card{grid-column:3;padding-right:0;padding-left:30px;text-align:left}
+  .stn .card p,.stn .card .acts,.stn .card .chips,.stn .card .say{margin-left:auto}
+  .stn.r .card p,.stn.r .card .acts,.stn.r .card .chips,.stn.r .card .say{margin-left:0}
+  .stn .card .acts,.stn .card .chips{justify-content:flex-end}
+  .stn.r .card .acts,.stn.r .card .chips{justify-content:flex-start}
+  .stn .card form,.stn .card .platforms,.stn .card .quote,.stn .card .player{text-align:left}
+  .stn .card .quote{border-left:0;border-right:4px solid var(--stay);padding:0 14px 0 0;text-align:right}
+  .stn.r .card .quote{border-right:0;border-left:4px solid var(--stay);padding:0 0 0 14px;text-align:left}
+  .stn .card .score{justify-content:flex-end}
+  .stn.r .card .score{justify-content:flex-start}
+  .stn .card .platforms,.stn .card form,.stn .card .player{margin-left:auto}
+  .stn.r .card .platforms,.stn.r .card form,.stn.r .card .player{margin-left:0}
+  .stn .card .player{max-width:520px}
+  .faq,.hero{padding-left:var(--pad)}
+  footer .row{grid-template-columns:1.2fr 1fr;align-items:end}
+}
+@media (prefers-reduced-motion:reduce){.js .stn::before,.js .stn.in::before{transition:none;transform:scaleY(1)}.js .stn .card,.js .stn.in .card{opacity:1;transform:none;transition:none}}
+@media (forced-colors:active){.stn::before{background:CanvasText}.stn .dot{border-color:CanvasText}}
+</style>
+</head>
+<body>
+<div id="intro"><button type="button" class="iskip">Skip</button><div class="ib" aria-hidden="true"><img class="il" src="../_shared/logo-barracuda-640.webp" width="640" height="640" alt=""></div></div>
+<script>(function(){var d=document,h=d.documentElement,o=d.getElementById("intro");function end(){if(!h.classList.contains("intro"))return;h.classList.remove("intro");var f=o.contains(d.activeElement);o.remove();if(f){var t=d.querySelector("h1");if(t){t.tabIndex=-1;t.focus({preventScroll:true})}}window.dispatchEvent(new Event("introdone"))}if(!h.classList.contains("intro")){o.remove();return}if(getComputedStyle(o).animationName==="none"){end();return}o.addEventListener("animationend",function(e){if(e.target===o)end()});o.addEventListener("click",end);d.addEventListener("keydown",end);setTimeout(end,4500)})()</script>
+
+<header class="top">
+  <div class="row">
+    <a class="brand" href="./"><img src="../_shared/logo-barracuda-88.webp" width="34" height="34" alt=""><b class="sign">BARRACUDA<small>Beach Resort · Okun Ajah</small></b></a>
+    <button type="button" class="btn day sm" data-scroll="#book">Book</button>
+  </div>
+  <div class="now"><div class="row"><span class="pip" id="pip"></span><span class="lname" id="lname">Road</span><span class="sname" id="sname">Lekki-Epe Expressway</span></div></div>
+  <div class="prog" id="prog"><i></i></div>
+</header>
+
+<main>
+<section class="hero">
+  <p class="lab">Okun Ajah, Lagos</p>
+  <h1>One line from the main road to the sea.</h1>
+  <p class="lead">Follow the stops. We show you the way in, what to do once you are there and where to sleep, then you send us your request on WhatsApp.</p>
+  <div class="legend" aria-label="The three lines"><span style="--c:var(--road)"><i></i>Road</span><span style="--c:var(--day)"><i></i>Day line</span><span style="--c:var(--stay)"><i></i>Stay line</span></div>
+  <div class="acts"><button type="button" class="btn day" data-scroll="#first">Start at the main road</button><a class="btn" href="tel:07088654508">Call 0708 865 4508</a></div>
+</section>
+
+<div class="line" id="line">
+
+  <article class="stn" id="first" data-line="Road" data-name="Lekki-Epe Expressway">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">Start</p><h2 class="sign">Lekki-Epe Expressway</h2><p>The main road in Ajah. Your first stop is the Abraham Adesanya roundabout.</p></div>
+  </article>
+
+  <article class="stn r" data-line="Road" data-name="Abraham Adesanya roundabout">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">Stop 1</p><h2 class="sign">Abraham Adesanya roundabout</h2><p>Get to the roundabout on the Lekki-Epe Expressway, in Ajah. By bus, ask for the Abraham Adesanya bus stop and get down there.</p><div class="chips"><span class="chip">Bus stop</span><span class="chip">Roundabout</span></div></div>
+  </article>
+
+  <article class="stn" data-line="Road" data-name="Ogombo Road">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">Stop 2</p><h2 class="sign">Ogombo Road</h2><p>Go through Ogombo Road toward Okun Ajah. From Abraham Adesanya it is about 7 km, around 25 minutes by car when the road is quiet. Go slowly on the last stretch: guests say it can be rough after rain.</p>
+      <div class="say"><q>Barracuda Beach, Okun Ajah, through Ogombo Road</q><button type="button" class="btn sm" data-copy="Barracuda Beach, Okun Ajah, through Ogombo Road">Copy</button></div></div>
+  </article>
+
+  <article class="stn r" data-line="Road" data-name="Not this stop">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><div class="wrong"><p class="stop">Wrong stop?</p><h2 class="sign">Another beach.</h2><p>Google Maps can send you to another beach on this road. A beach with another name is not Barracuda. Send us your location and we will guide you, or call 0708 865 4508.</p>
+      <div class="acts"><button type="button" class="btn day sm" data-loc>Send my location on WhatsApp</button></div><p class="fine" data-loc-note style="margin-top:8px">Your phone asks first. Your location goes only into the WhatsApp message, and you choose whether to send it.</p></div></div>
+  </article>
+
+  <article class="stn" data-line="Road" data-name="The flags">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">Stop 3</p><h2 class="sign">The flags</h2><p>The way in is lined with flags. Keep going.</p><div class="ph"><img src="../_shared/img/flags-1000.webp" srcset="../_shared/img/flags-640.webp 640w, ../_shared/img/flags-1000.webp 1000w, ../_shared/img/flags-1080.webp 1080w" sizes="(min-width:900px) 40vw, 92vw" width="1080" height="809" alt="The path to the resort, lined with flags and palm trees" loading="lazy" decoding="async"></div></div>
+  </article>
+
+  <article class="stn hub r" data-line="Road" data-name="The painted wall: the gate">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">Interchange · the gate</p><h2 class="sign">The painted wall</h2><p>The wall leads to the gate. If you can see this, you are at the right beach. The gate fee: message us and we reply with the fee for your day.</p><div class="ph"><img src="../_shared/img/sign-1000.webp" srcset="../_shared/img/sign-640.webp 640w, ../_shared/img/sign-1000.webp 1000w, ../_shared/img/sign-1400.webp 1400w" sizes="(min-width:900px) 40vw, 92vw" width="1400" height="788" alt="The painted BARRACUDA BEACH sign above the entrance" loading="lazy" decoding="async"></div>
+      <div class="acts"><a class="btn wa sm" href="https://wa.me/2347088654508" data-wa="Hello Barracuda Beach Resort. I am at the gate. Please tell me the gate fee for today. Thank you.">Ask the gate fee</a></div></div>
+  </article>
+
+  <article class="stn day hub" data-line="Day line" data-name="Change here: the Day line">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><div class="fork"><i style="--c:var(--day)"></i><b>Day line</b> Beach, pool, volleyball, horses.</div></div>
+  </article>
+
+  <article class="stn day r" data-line="Day line" data-name="The pool">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">12:00 · Day line</p><h2 class="sign">The pool</h2><p>An outdoor pool, with palm trees and thatched huts around it.</p><div class="ph"><img src="../_shared/img/pool-1000.webp" srcset="../_shared/img/pool-640.webp 640w, ../_shared/img/pool-1000.webp 1000w, ../_shared/img/pool-1400.webp 1400w" sizes="(min-width:900px) 40vw, 92vw" width="1400" height="1050" alt="The outdoor pool with a gold rail, palm trees and thatched huts" loading="lazy" decoding="async"></div></div>
+  </article>
+
+  <article class="stn day" data-line="Day line" data-name="Volleyball">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">2:00 · Day line</p><h2 class="sign">Volleyball</h2><p>A sand court beside the coloured buildings. 52 guests mention volleyball on Google.</p><div class="ph"><img src="../_shared/img/courts-1000.webp" srcset="../_shared/img/courts-640.webp 640w, ../_shared/img/courts-1000.webp 1000w, ../_shared/img/courts-1032.webp 1032w" sizes="(min-width:900px) 40vw, 92vw" width="1032" height="774" alt="A sand volleyball court beside the coloured resort buildings" loading="lazy" decoding="async"></div></div>
+  </article>
+
+  <article class="stn day r" data-line="Day line" data-name="Horse riding">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">4:00 · Day line</p><h2 class="sign">Horse riding</h2><p>Guests ride along the beach, at the water's edge. 23 guests mention horse riding on Google.</p><div class="ph"><img src="../_shared/img/horse-1000.webp" srcset="../_shared/img/horse-640.webp 640w, ../_shared/img/horse-1000.webp 1000w, ../_shared/img/horse-1400.webp 1400w" sizes="(min-width:900px) 40vw, 92vw" width="1400" height="1050" alt="A horse and riders at the water's edge on the beach" loading="lazy" decoding="async"></div></div>
+  </article>
+
+  <article class="stn day" data-line="Day line" data-name="The beach">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">All day · Day line</p><h2 class="sign">The private beach</h2><p>65 guests on Google mention the private beach, 45 say it is not crowded and 31 say it is clean. Busy days can differ, so ask when you send your request.</p><div class="ph"><img src="../_shared/img/sea-1000.webp" srcset="../_shared/img/sea-640.webp 640w, ../_shared/img/sea-1000.webp 1000w, ../_shared/img/sea-1400.webp 1400w" sizes="(min-width:900px) 40vw, 92vw" width="1400" height="647" alt="Waves rolling onto the beach under a pale sky" loading="lazy" decoding="async"></div></div>
+  </article>
+
+  <article class="stn stay hub r" data-line="Stay line" data-name="Change here: the Stay line">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><div class="fork"><i style="--c:var(--stay)"></i><b>Stay line</b> Rooms, with check-in from 12:30pm.</div></div>
+  </article>
+
+  <article class="stn stay" data-line="Stay line" data-name="The rooms">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">6:00 · Stay line</p><h2 class="sign">The rooms</h2><p>Check-in is from 12:30pm and check-out is by 12:00 noon. Air-conditioned, free breakfast, Wi-Fi and free parking, as listed on the resort's Google page. Watch each room in the resort's own videos.</p>
+      <div class="player" id="player"><img src="../_shared/img/room-640.webp" width="1400" height="1867" alt="" loading="lazy"><div class="hint">Choose a room to watch</div></div>
+      <div class="platforms">
+        <div class="plat"><div><b>Standard Room</b><span>Price: we reply on WhatsApp</span></div><button type="button" class="btn sm" data-yt="E9F9NCl_I74" data-title="Standard Room" data-target="#player">Watch</button></div>
+        <div class="plat"><div><b>Deluxe Room</b><span>Price: we reply on WhatsApp</span></div><button type="button" class="btn sm" data-yt="k3T0BG5xiOs" data-title="Deluxe Room" data-target="#player">Watch</button></div>
+        <div class="plat"><div><b>Junior Suite</b><span>Price: we reply on WhatsApp</span></div><button type="button" class="btn sm" data-yt="BMicKhN9Nto" data-title="Junior Suite" data-target="#player">Watch</button></div>
+        <div class="plat"><div><b>Executive Suite</b><span>Price: we reply on WhatsApp</span></div><button type="button" class="btn sm" data-yt="DG17_Bgub4o" data-title="Executive Suite" data-target="#player">Watch</button></div>
+      </div></div>
+  </article>
+
+  <article class="stn stay r" data-line="Stay line" data-name="What guests say">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">On Google · Stay line</p><h2 class="sign">What guests say</h2><div class="score"><b>4.2</b><span>from 6,140 reviews</span></div>
+      <div class="quote"><blockquote>The place is really beautiful, with amazing sea views and a very relaxing atmosphere.</blockquote><cite>Amarachi Abani, Google review</cite></div>
+      <div class="quote"><blockquote>Great vibes and even better memories.</blockquote><cite>Sugarshey Sijumoru, Google review</cite></div>
+      <div class="quote"><blockquote>The beach was much cleaner than it was during my first visit in 2019, and I noticed a lot of improvements.</blockquote><cite>Toyin Akinola, Google review</cite></div></div>
+  </article>
+
+  <article class="stn stay" id="book" data-line="Stay line" data-name="End of the line: book">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card"><p class="stop">End of the line</p><h2 class="sign">Book your visit</h2><p>Send your request on WhatsApp. The resort replies to confirm the day and the fee. You pay nothing on this website.</p>
+      <form data-kind="day" novalidate>
+        <div class="seg" role="radiogroup" aria-label="What are you booking?">
+          <label><input type="radio" name="kind" value="day" checked><span>Day visit</span></label>
+          <label><input type="radio" name="kind" value="room"><span>Room</span></label>
+          <label><input type="radio" name="kind" value="event"><span>Group</span></label>
+        </div>
+        <div class="g2">
+          <div class="f full"><label for="b-date">Day you want to come</label><input id="b-date" name="date" type="date"></div>
+          <div class="f"><label for="b-ad">Adults</label><input id="b-ad" name="adults" type="number" min="1" max="200" value="2" inputmode="numeric"></div>
+          <div class="f"><label for="b-ch">Children</label><input id="b-ch" name="children" type="number" min="0" max="200" value="0" inputmode="numeric"></div>
+          <div class="f full only-room"><label for="b-nt">How many nights?</label><input id="b-nt" name="nights" type="number" min="1" max="30" value="1" inputmode="numeric"></div>
+          <div class="f full only-event"><label for="b-note">What you have in mind</label><input id="b-note" name="note" type="text" placeholder="For example: a birthday for 20 people"></div>
+          <div class="f full"><label for="b-nm">Your name</label><input id="b-nm" name="name" type="text" autocomplete="name" placeholder="For example: Ada"></div>
+        </div>
+        <p class="err" role="alert"></p>
+        <button class="btn wa" type="submit">Send on WhatsApp</button>
+        <p class="fine">This opens WhatsApp with your message ready to send.</p>
+      </form></div>
+  </article>
+</div>
+
+<section class="faq" aria-label="Information desk">
+  <h2>Information desk</h2>
+  <details><summary>Where exactly is the gate?</summary><p>Follow the stops above: the Abraham Adesanya roundabout, Ogombo Road, then the painted wall. If Google Maps stops you at a beach with another name, you are not at Barracuda. Send us your location and we will guide you.</p></details>
+  <details><summary>How much is the gate fee?</summary><p>Message us on WhatsApp and we reply with the fee for your day.</p></details>
+  <details><summary>Can I bring my own food and drinks?</summary><p>Ask us when you message, and we tell you the rule.</p></details>
+  <details><summary>Do I pay on this website?</summary><p>No. You send a request, we reply on WhatsApp and confirm the day. How you pay is agreed with the resort.</p></details>
+  <details><summary>Is there parking?</summary><p>Free parking is listed on the resort's Google page.</p></details>
+  <details><summary>Is the beach crowded?</summary><p>45 guests on Google say it is not crowded. Busy days can differ, so ask when you send your request.</p></details>
+</section>
+</main>
+
+<footer><div class="row">
+  <div><b>Barracuda Beach Resort</b><p style="margin-top:8px">Okun Ajah, off Abraham Adesanya roundabout, off Ogombo Road, Ajah, Lagos.</p></div>
+  <div class="acts"><a class="btn wa" href="https://wa.me/2347088654508" data-wa="Hello Barracuda Beach Resort. I have a question.">Message on WhatsApp</a><a class="btn" href="tel:07088654508">0708 865 4508</a></div>
+</div></footer>
+
+<script src="../_shared/core.js?v=202611010248"></script>
+<script>
+(function () {
+  var stns = BB.qsa('.stn'), pip = BB.qs('#pip'), lname = BB.qs('#lname'), sname = BB.qs('#sname'), prog = BB.qs('#prog'), nowBar = BB.qs('.now');
+  var colors = { 'Road': '#101826', 'Day line': '#1f4bff', 'Stay line': '#008f7a' };
+  function bar() { var t = BB.qs('.top'); return t ? t.offsetHeight : 100; }
+  var cur = -1;
+  function pass() {
+    var line = window.innerHeight * 0.42, best = 0;
+    stns.forEach(function (s, i) { if (s.getBoundingClientRect().top < line + 40) best = i; });
+    if (best !== cur) {
+      cur = best; var s = stns[best], c = colors[s.dataset.line];
+      lname.textContent = s.dataset.line; sname.textContent = s.dataset.name;
+      nowBar.style.setProperty('--c', c); prog.style.setProperty('--c', c);
+    }
+    var L = BB.qs('#line'), r = L.getBoundingClientRect(), total = r.height - window.innerHeight * 0.5;
+    var f = Math.max(0, Math.min(1, (window.innerHeight * 0.42 - r.top) / Math.max(1, total)));
+    prog.firstElementChild.style.setProperty('--f', f.toFixed(3)); prog.style.setProperty('--f', f.toFixed(3));
+  }
+  var raf = false;
+  window.addEventListener('scroll', function () { if (raf) return; raf = true; requestAnimationFrame(function () { raf = false; pass(); }); }, { passive: true });
+  window.addEventListener('resize', pass);
+  BB.reveal('.stn'); pass();
+  document.documentElement.style.scrollPaddingTop = '110px';
+  BB.qsa('[data-scroll]').forEach(function (b) { b.addEventListener('click', function () { var t = BB.qs(b.dataset.scroll); if (t) t.scrollIntoView({ block: 'start' }); }); });
+
+  var form = BB.qs('form'), err = BB.qs('.err', form);
+  BB.qsa('input[name=kind]', form).forEach(function (r) { r.addEventListener('change', function () { form.dataset.kind = r.value; err.textContent = ''; }); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = new FormData(form), o = {}; f.forEach(function (v, k) { o[k] = v; });
+    if (!o.date) { err.textContent = 'Please pick the day you want to come.'; BB.qs('#b-date').focus(); return; }
+    if (!(Number(o.adults) >= 1)) { err.textContent = 'Please say how many adults.'; return; }
+    err.textContent = ''; BB.send(BB.msg(o.kind, o));
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+/* intro: the logo on a clean screen, then a soft dissolve into the page. Opacity and a small scale only. See README.md */
+#intro{display:none}
+.js.intro{overflow:hidden;scrollbar-gutter:stable}
+.js.intro #intro{display:block;position:fixed;inset:0;z-index:1000;background:var(--intro-bg,#fff);cursor:pointer;touch-action:none;animation:iout .8s ease 1.9s forwards}
+#intro .il{position:absolute;left:50%;top:50%;width:min(60vw,240px);height:auto;transform:translate(-50%,-50%)}
+.js.intro #intro .il{animation:ilogo 2.2s cubic-bezier(.22,.61,.36,1) both}
+.iskip{position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;z-index:2;min-height:44px;padding:0 20px;border:1px solid rgba(255,255,255,.7);border-radius:22px;background:rgba(var(--intro-rgb,11,27,61),.9);color:#fff;font-family:inherit;font-weight:700;font-size:15px;line-height:1;cursor:pointer}
+.iskip:focus-visible{outline:0;box-shadow:0 0 0 2px #fff,0 0 0 5px var(--intro-ring,#003eb8)}
+h1[tabindex="-1"]:focus{outline:0}
+@keyframes ilogo{0%{opacity:0;transform:translate(-50%,-50%) scale(.92)}34%,68%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.06)}}
+@keyframes iout{to{opacity:0}}
+@keyframes ifade{0%{opacity:0}100%{opacity:1}}
+@media (min-width:900px){#intro .il{width:260px}}
+@media (prefers-reduced-motion:reduce){.js.intro #intro{animation-delay:1s;animation-duration:.5s}#intro .il,.js.intro #intro .il{animation:ifade .5s ease both}}
