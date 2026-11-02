@@ -12,6 +12,4 @@ Room videos are embedded from the resort's own YouTube channel (Barracuda Beach 
 
 Fonts: Unbounded (headlines) and Hanken Grotesk (text), both under the SIL Open Font License, self-hosted in `assets/fonts/`.
 
-**Five other designs (1 Nov 2026):** `concepts/` holds five completely different designs of the same site, built from the same facts, so the resort can choose a direction: The Walk, The Day Pass, The Story, The Line and The Issue. Same rules as above: placeholder pictures, `noindex`, nothing is a price list.
-
 Built by Samuel Uchenna. To take it down: `gh repo delete samueluchenna/barracuda-preview`, or turn off Pages in the repository settings.
